@@ -9,12 +9,18 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public function Cliente ()
+    {
+        return $this->hasOne('App\Cliente');
+    }
+
+    public function EntrenadorPersonal()
+    {
+        return $this->hasOne('App\EntrenadorPersonal');
+    }
+
     /**
      * The attributes that are mass assignable.
-     *public function id()
-     *      return $this->hasOne('App\EntrenadorPersonal');
-     *public function id()
-     *      return $this->hasOne('App\ClienteController');
      *
      *
      * @var array

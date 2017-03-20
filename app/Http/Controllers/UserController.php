@@ -10,21 +10,31 @@ use App\Cliente;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *public function cliente_de_usuario_1(){
-     * $cliente= User::find(1)->cliente);
-     * $email_cliente=User :: find(1)->cliente->email;
-     *
-     *
-     *
-     * }
-     *
-     *
-     *
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function cliente_de_usuario_1(){
+        $Cliente = User::find(1)->cliente;
+        $idUsuario = User::find(1)->cliente->idUsuario;
+    }
+
+    public function entrenadorPersonal_de_usuario_1(){
+        $entrenadorPersonal = User::find(1)->entrenadorPersonal;
+        $idUsuario = User::find(1)->entrenadorPersonal->idUsuario;
+
+
+
+
+
+
+
+
+        /**
+         * Display a listing of the resource.
+         *
+         *
+         *
+         *
+         * @return \Illuminate\Http\Response
+         */
+    }
     public function index()
     {
         //
