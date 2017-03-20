@@ -11,12 +11,18 @@ class User extends Authenticatable
 
     /**
      * The attributes that are mass assignable.
+     *public function id()
+     *      return $this->hasOne('App\EntrenadorPersonal');
+     *public function id()
+     *      return $this->hasOne('App\ClienteController');
+     *
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'nombre', 'apellidos','email', 'password','idUsuario',
     ];
+
 
     /**
      * The attributes that should be hidden for arrays.

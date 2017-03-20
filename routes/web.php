@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::resource('User', 'UserController');
+Route::resource('Cliente', 'ClienteController');
+Route::resource('EntrenadorPersonal', 'EntrenadorPersonalController');
