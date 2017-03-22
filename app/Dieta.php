@@ -20,4 +20,8 @@ class Dieta extends Model
         return $this->hasOne('App\Cliente');
     }
 
+    public function EntrenadorPersonal ()
+    {
+        return $this->belongsTo('App\EntrenadorPersonal');
+    }
 }

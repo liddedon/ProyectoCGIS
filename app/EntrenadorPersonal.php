@@ -13,8 +13,14 @@ class EntrenadorPersonal extends Model
         'especialidad',
 
     ];
+
     public function User ()
     {
         return $this->hasOne('App\User');
+    }
+
+    public function Dieta ()
+    {
+        return $this->hasMany('App\Dieta');
     }
 }
