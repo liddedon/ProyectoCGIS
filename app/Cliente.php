@@ -14,6 +14,15 @@ class Cliente extends Model
         'enfermedadesCronicas','embarazada','medicación',
 
 ];
+    public function User ()
+    {
+        return $this->hasOne('App\User');
+    }
+
+    public function Dieta ()
+    {
+        return $this->hasOne('App\Dieta');
+    }
 
 
 }

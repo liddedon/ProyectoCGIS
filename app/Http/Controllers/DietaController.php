@@ -4,22 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ClienteController extends Controller
+class DietaController extends Controller
 {
-    public function usuario_de_cliente_1(){
-        $User = Cliente::find(1)->user;
-        $idUsuario = Cliente::find(1)->user->idUsuario;
-    }
-
-    public function dieta_de_cliente_1(){
-        $dieta = Cliente::find(1)->dieta;
-        $idUsuario = Cliente::find(1)->dieta->idUsuario;
+    public function cliente_de_dieta_1(){
+        $cliente = Dieta::find(1)->cliente;
+        $idUsuario = Dieta::find(1)->cliente->idUsuario;
     }
 
 
-
-
-    /**
+        /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

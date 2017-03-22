@@ -10,6 +10,7 @@ use App\Cliente;
 
 class UserController extends Controller
 {
+
     public function cliente_de_usuario_1(){
         $Cliente = User::find(1)->cliente;
         $idUsuario = User::find(1)->cliente->idUsuario;
@@ -18,7 +19,6 @@ class UserController extends Controller
     public function entrenadorPersonal_de_usuario_1(){
         $entrenadorPersonal = User::find(1)->entrenadorPersonal;
         $idUsuario = User::find(1)->entrenadorPersonal->idUsuario;
-
 
 
 

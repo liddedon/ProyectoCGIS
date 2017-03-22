@@ -19,3 +19,4 @@ Route::get('/', function () {
 Route::resource('User', 'UserController');
 Route::resource('Cliente', 'ClienteController');
 Route::resource('EntrenadorPersonal', 'EntrenadorPersonalController');
+Route::resource('Dieta', 'DietaController');

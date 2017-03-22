@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\EntrenadorPersonal;
 use Illuminate\Http\Request;
 
 class EntrenadorPersonalController extends Controller
 {
+
+    public function usuario_de_entrenadorPersonal_1(){
+        $User = EntrenadorPersonal::find(1)->user;
+        $idUsuario = EntrenadorPersonal::find(1)->user->idUsuario;
+    }
     /**
      * Display a listing of the resource.
      *
