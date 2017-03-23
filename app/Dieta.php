@@ -10,7 +10,7 @@ class Dieta extends Model
 
     //
     protected $fillable = [
-       'nombreDieta','descripcion','nombreEntrenadorPersonal','nombreCliente','idUsuario',
+       'nombreDieta','descripcion','nombreUsuario','idUsuario',
     //,
 
     ];

@@ -2,27 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\EntrenadorPersonal;
 use Illuminate\Http\Request;
 
-class EntrenadorPersonalController extends Controller
+class EntramientoController extends Controller
 {
-
-    public function usuario_de_entrenadorPersonal_1(){
-        $User = EntrenadorPersonal::find(1)->user;
-        $idUsuario = EntrenadorPersonal::find(1)->user->idUsuario;
-    }
-    //¿Qué hacemos exactamente?
-    public function validar_dieta_de_entrenadorPersonal($idUsuario){
-        $dieta= EntrenadorPersonal::find($idUsuario)->dieta;
-        foreach ($dieta as $dieta ){
-            $dieta->valido = true;
-            $dieta->save();
-        }
-
-
-    }
-
     /**
      * Display a listing of the resource.
      *
