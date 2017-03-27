@@ -17,8 +17,8 @@ class CreateEntrenamientosTable extends Migration
             $table->increments('id');
             $table->string('nombreCliente');
             $table->string('nombreEntrenadorPersonal');
-            $table->integer('idCliente');
-            $table->integer('idEntrenadorPersonal');
+            $table->integer('cliente_id');
+            $table->integer('entrenadorPersonal_id');
             $table->date('fecha');
             $table->string('descripcion');
 

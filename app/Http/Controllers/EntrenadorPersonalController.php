@@ -8,20 +8,29 @@ use Illuminate\Http\Request;
 class EntrenadorPersonalController extends Controller
 {
 
-    public function usuario_de_entrenadorPersonal_1(){
-        $User = EntrenadorPersonal::find(1)->user;
-        $idUsuario = EntrenadorPersonal::find(1)->user->idUsuario;
+    /**    public function usuario_de_entrenadorPersonal_1(){
+        $user = EntrenadorPersonal::find(1)->user;
+        $usuario_id = EntrenadorPersonal::find(1)->user->usuario_id;
     }
     //¿Qué hacemos exactamente?
-    public function validar_dieta_de_entrenadorPersonal($idUsuario){
-        $dieta= EntrenadorPersonal::find($idUsuario)->dieta;
-        foreach ($dieta as $dieta ){
-            $dieta->valido = true;
-            $dieta->save();
+        public function validar_dieta_de_entrenadorPersonal($id)
+        {
+            $dietas = EntrenadorPersonal::find($id)->dietas;
+            foreach ($dietas as $dieta) {
+                $dieta->valido = true;
+                $dieta->save();
+            }
         }
 
+        public function validar_entrenamiento_de_entrenadorPersonal($id){
+            $entrenamientos= EntrenadorPersonal::find($id)->entrenamientos;
+            foreach ($entrenamientos as $entrenamiento ){
+                $entrenamiento->valido = true;
+                $entrenamiento->save();
+            }
 
-    }
+
+    }*/
 
     /**
      * Display a listing of the resource.
@@ -30,7 +39,9 @@ class EntrenadorPersonalController extends Controller
      */
     public function index()
     {
-        //
+        $entrenadorPersonals = EntrenadorPersonal::all();
+        return view('entrenadorPersonals/index',['entrenadorPersonals'=>$entrenadorPersonals]);
+
     }
 
     /**
@@ -40,7 +51,8 @@ class EntrenadorPersonalController extends Controller
      */
     public function create()
     {
-        //
+        return view ('entrenadorPersonals/create');
+
     }
 
     /**

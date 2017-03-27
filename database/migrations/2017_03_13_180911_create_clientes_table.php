@@ -15,17 +15,17 @@ class CreateClientesTable extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('edad')->nullable();
-            $table->string('sexo')->nullable();
-            $table->float('altura')->nullable();
-            $table->float('peso')->nullable();
-            $table->boolean('haceDeporte')->nullable();
-            $table->integer('numeroDeHoras')->nullable();
-            $table->boolean('deporteCalle')->nullable();
-            $table->boolean ('deporteCasa')->nullable();
-            $table->boolean ('quiereDieta')->nullable();
-            $table->string('observaciones')->nullable();
-            $table->boolean('problemasMusculares')->nullable();
+            $table->integer('edad');
+            $table->string('sexo');
+            $table->float('altura');
+            $table->float('peso');
+            $table->boolean('haceDeporte');
+            $table->integer('numeroDeHoras');
+            $table->boolean('deporteCalle');
+            $table->boolean ('deporteCasa');
+            $table->boolean ('quiereDieta');
+            $table->string('observaciones');
+            $table->boolean('problemasMusculares');
             $table->boolean('problemasCardiovasculares');
             $table->boolean('hipertensión');
             $table->string('enfermedadesCronicas');

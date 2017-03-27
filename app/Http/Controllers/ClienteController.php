@@ -6,19 +6,24 @@ use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
-    public function usuario_de_cliente_1(){
+   /** public function usuario_de_cliente_1(){
         $User = Cliente::find(1)->user;
-        $idUsuario = Cliente::find(1)->user->idUsuario;
+        $usuario_id = Cliente::find(1)->user->usuario_id;
     }
 
     public function dieta_de_cliente_1(){
         $dieta = Cliente::find(1)->dieta;
-        $idUsuario = Cliente::find(1)->dieta->idUsuario;
+        $usuario_id = Cliente::find(1)->dieta->usuario_id;
     }
 
+    public function validar_entrenamiento_de_Cliente($id){
+        $entrenamientos = Cliente::find($id)->entrenamientos;
+        foreach ($entrenamientos as $entrenamiento) {
+            $entrenamiento->valido = true;
+            $entrenamiento->save();
+        }
 
-
-
+    }*/
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +31,9 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        //
+        $clientes = Cliente::all();
+        return view('clientes/index',['clientes'=>$clientes]);
+
     }
 
     /**
@@ -36,7 +43,10 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+        $entrenamientos= Entrenamiento :: all()->pluck('id');
+
+        return view('clientes/create',['entrenamientos'=>$entrenamientos]);
+
     }
 
     /**

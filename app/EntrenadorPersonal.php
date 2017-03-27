@@ -23,4 +23,9 @@ class EntrenadorPersonal extends Model
     {
         return $this->hasMany('App\Dieta');
     }
+
+    public function Entrenamiento ()
+    {
+        return $this->hasMany('App\Entrenamiento');
+    }
 }

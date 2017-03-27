@@ -2,27 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Dieta;
 use Illuminate\Http\Request;
 
-class DietaController extends Controller
+class EjerciciosController extends Controller
 {
-   /** public function cliente_de_dieta_1(){
-        $cliente = Dieta::find(1)->cliente;
-        $usuario_id = Dieta::find(1)->cliente->usuario_id;
-    }*/
-
-
-        /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $dietas = Dieta::all();
-        return view('dietas/index',['dietas'=>$dietas]);
-
+        //
     }
 
     /**
@@ -32,10 +23,7 @@ class DietaController extends Controller
      */
     public function create()
     {
-        $entrenadorPersonals=EntrenadorPersonal::all()->pluck('nombre','id');
-
-        return view('dietas/create',['entrenadorPersonals'=>$entrenadorPersonals]);
-
+        //
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Entrenamiento;
 use Illuminate\Http\Request;
 
 class EntramientoController extends Controller
@@ -13,7 +14,9 @@ class EntramientoController extends Controller
      */
     public function index()
     {
-        //
+        $entrenamientos = Entrenamiento::all();
+        return view('entrenamientos/index',['entrenamientos'=>$entrenamientos]);
+
     }
 
     /**
@@ -23,7 +26,13 @@ class EntramientoController extends Controller
      */
     public function create()
     {
-        //
+        $entrenadorPersonals=EntrenadorPersonal::all()->pluck('nombre','id');
+
+        $clientes=Cliente::all()->pluck('nombre','id');
+
+
+        return view('entrenamientos/create',['entrenadorPersonals'=>$entrenadorPersonals,'clientes'=>$clientes]);
+
     }
 
     /**
@@ -34,7 +43,23 @@ class EntramientoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate ($request,[
+        'nombreCliente'=>'required|exists:clientes, nombre',
+        'nombreEntrenadorPersonal'=>'required|exists:entrenadorPersonals, nombre',
+        'cliente_id'=>'required|exists:clientes,id',
+        'entrenadorPersonal_id'=>'required|exists:entrenadorPersonals,id',
+        'fecha'=>'required|max:255',
+        'descripcion'=>'required|max:2000'
+
+            ]);
+        $entrenamiento= new Entrenamiento($request->all());
+        $entrenamiento->save();
+
+
+        flash('Entrenamiento creado correctamente');
+
+        return redirect()->route('entrenamientos.index');
+
     }
 
     /**

@@ -21,3 +21,4 @@ Route::resource('Cliente', 'ClienteController');
 Route::resource('EntrenadorPersonal', 'EntrenadorPersonalController');
 Route::resource('Dieta', 'DietaController');
 Route::resource('Entrenamiento', 'EntrenamientoController');
+Route::get('modificarUsuario/{id}','AccionController@modificarUsuario')->name('modificarUsuario');

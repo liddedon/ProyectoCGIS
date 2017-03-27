@@ -11,21 +11,21 @@ use App\Cliente;
 class UserController extends Controller
 {
 
-    public function cliente_de_usuario_1(){
+   /** public function cliente_de_usuario_1(){
         $Cliente = User::find(1)->cliente;
-        $idUsuario = User::find(1)->cliente->idUsuario;
+        $usuario_id = User::find(1)->cliente->usuario_id;
     }
 
     public function entrenadorPersonal_de_usuario_1(){
         $entrenadorPersonal = User::find(1)->entrenadorPersonal;
-        $idUsuario = User::find(1)->entrenadorPersonal->idUsuario;
+        $usuario_id = User::find(1)->entrenadorPersonal->usuario_id;
 
 
 
 
+}
 
-
-
+*/
         /**
          * Display a listing of the resource.
          *
@@ -34,10 +34,13 @@ class UserController extends Controller
          *
          * @return \Illuminate\Http\Response
          */
-    }
+
     public function index()
     {
-        //
+
+        $users = User::all();
+        return view('users/index',['users'=>$users]);
+
     }
 
     /**
@@ -47,7 +50,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view ('users/create');
+
     }
 
     /**

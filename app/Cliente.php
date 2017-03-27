@@ -24,5 +24,8 @@ class Cliente extends Model
         return $this->hasOne('App\Dieta');
     }
 
-
+    public function Entrenamiento ()
+    {
+        return $this->belongsToMany('App\Entrenamiento');
+    }
 }
