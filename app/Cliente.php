@@ -9,7 +9,7 @@ class Cliente extends Model
 { use  Notifiable;
     //
     protected $fillable = [
-        'edad','sexo','altura','peso','haceDeporte','numeroDeHoras','deporteCalle','deporteCasa',
+        'fechaNacimiento','sexo','altura','peso','haceDeporte','numeroDeHoras','deporteCalle','deporteCasa',
         'quiereDieta','observaciones','problemasMusculares','problemasCardiovasculares','hipertensión',
         'enfermedadesCronicas','embarazada','medicación',
 
@@ -21,11 +21,11 @@ class Cliente extends Model
 
     public function Dieta ()
     {
-        return $this->hasOne('App\Dieta');
+        return $this->hasMany('App\Dieta');
     }
 
     public function Entrenamiento ()
     {
-        return $this->belongsToMany('App\Entrenamiento');
+        return $this->hasMany('App\Entrenamiento');
     }
 }

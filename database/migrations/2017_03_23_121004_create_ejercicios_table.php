@@ -15,6 +15,12 @@ class CreateEjerciciosTable extends Migration
     {
         Schema::create('ejercicios', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombreEjercicio');
+            $table->string('foto');
+            $table->string('video');
+            $table->string('descripcion');
+            $table->string('zona');
+
             $table->timestamps();
         });
     }

@@ -42,24 +42,7 @@ class EntramientoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $this->validate ($request,[
-        'nombreCliente'=>'required|exists:clientes, nombre',
-        'nombreEntrenadorPersonal'=>'required|exists:entrenadorPersonals, nombre',
-        'cliente_id'=>'required|exists:clientes,id',
-        'entrenadorPersonal_id'=>'required|exists:entrenadorPersonals,id',
-        'fecha'=>'required|max:255',
-        'descripcion'=>'required|max:2000'
-
-            ]);
-        $entrenamiento= new Entrenamiento($request->all());
-        $entrenamiento->save();
-
-
-        flash('Entrenamiento creado correctamente');
-
-        return redirect()->route('entrenamientos.index');
-
+    {//
     }
 
     /**

@@ -16,9 +16,8 @@ class CreateEntrenadorPersonalsTable extends Migration
         Schema::create('entrenador_personals', function (Blueprint $table) {
             $table->increments('id');
             $table->string('especialidad');
-
-
             $table->timestamps();
+
         });
     }
 

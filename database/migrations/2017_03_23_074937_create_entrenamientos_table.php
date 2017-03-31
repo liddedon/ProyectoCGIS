@@ -15,17 +15,15 @@ class CreateEntrenamientosTable extends Migration
     {
         Schema::create('entrenamientos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombreCliente');
-            $table->string('nombreEntrenadorPersonal');
             $table->integer('cliente_id');
             $table->integer('entrenadorPersonal_id');
-            $table->date('fecha');
+            $table->dateTime('fechaInicio');
+            $table->dateTime('fechaFin');
             $table->string('descripcion');
-
-
-
-
             $table->timestamps();
+            $table->foreign('nombreEntrenadorPersonal_id')->reference('id')->on('entrenadorPersonal')->onDelete('cascade');
+            $table->foreign('cliente_id')->reference('id')->on('cliente')->onDelete('cascade');
+
         });
     }
 

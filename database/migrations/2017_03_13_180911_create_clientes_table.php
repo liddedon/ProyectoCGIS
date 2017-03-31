@@ -15,7 +15,7 @@ class CreateClientesTable extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('edad');
+            $table->dateTime('fechaNacimiento');
             $table->string('sexo');
             $table->float('altura');
             $table->float('peso');
@@ -31,7 +31,6 @@ class CreateClientesTable extends Migration
             $table->string('enfermedadesCronicas');
             $table->boolean('embarazada');
             $table->string('medicación');
-
             $table->timestamps();
         });
     }
