@@ -16,16 +16,16 @@ class CreateEjercicioEntrenamientosTable extends Migration
         Schema::create('ejercicio_entrenamientos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('entrenadorPersonal_id');
-            $table->integer('cliente_id');
+            $table->integer('entrenamiento_id');
+            $table->integer('ejercicio_id');
             $table->longText('observaciones');
             $table->integer('numSeries');
             $table->integer('numSeriesCompletadas');
             $table->integer('numRepeticiones');
             $table->integer('numRepeticionesCompletadas');
             $table->time('duracion');
-            $table->foreign('entrenadorPersonal_id')->reference('id')->on('entrenadorPersonal')->onDelete('cascade');
-            $table->foreign('cliente_id')->reference('id')->on('cliente')->onDelete('cascade');
+            $table->foreign('entrenamiento_id')->reference('id')->on('entrenamiento')->onDelete('cascade');
+            $table->foreign('ejercicio_id')->reference('id')->on('ejercicio')->onDelete('cascade');
         });
     }
 
