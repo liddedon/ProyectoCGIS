@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Ejercicios;
 use Illuminate\Http\Request;
 
-class EjerciciosController extends Controller
+class Ejercicio_entrenamientoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +13,10 @@ class EjerciciosController extends Controller
      */
     public function index()
     {
+        $ejercicio_entrenamientos = Ejercicio_entrenamiento::all();
+        return view('ejercicio_entrenamientos/index',['ejercicio_entrenamientos'=>$ejercicio_entrenamientos]);
+
         //
-        $ejercicios = Ejercicios::all();
-        return view('ejercicios/index',['ejercicios'=>$ejercicios]);
     }
 
     /**
@@ -25,11 +25,10 @@ class EjerciciosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    { $ejercicios=Ejercicio::all()->pluck('id');
+    { $ejercicio_entrenamientos=Ejercicio_entrenamiento::all()->pluck('id');
 
 
-        return view('ejercicios/create',['ejercicios'=>$ejercicios]);
-
+        return view('ejercicio_entrenamientos/create',['ejercicio_entrenamientos'=>$ejercicio_entrenamientos]);
         //
     }
 
