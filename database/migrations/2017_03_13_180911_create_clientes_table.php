@@ -24,7 +24,7 @@ class CreateClientesTable extends Migration
             $table->boolean('deporteCalle');
             $table->boolean ('deporteCasa');
             $table->boolean ('quiereDieta');
-            $table->string('observaciones');
+            $table->longText('observaciones');
             $table->boolean('problemasMusculares');
             $table->boolean('problemasCardiovasculares');
             $table->boolean('hipertensión');
