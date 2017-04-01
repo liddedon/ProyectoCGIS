@@ -16,7 +16,9 @@ class CreateEjercicioEntrenamientosTable extends Migration
         Schema::create('ejercicio_entrenamientos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('observaciones');
+            $table->integer('entrenadorPersonal_id');
+            $table->integer('cliente_id');
+            $table->longText('observaciones');
             $table->integer('numSeries');
             $table->integer('numSeriesCompletadas');
             $table->integer('numRepeticiones');
