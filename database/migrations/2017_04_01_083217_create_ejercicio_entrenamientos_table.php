@@ -22,6 +22,8 @@ class CreateEjercicioEntrenamientosTable extends Migration
             $table->integer('numRepeticiones');
             $table->integer('numRepeticionesCompletadas');
             $table->time('duracion');
+            $table->foreign('entrenadorPersonal_id')->reference('id')->on('entrenadorPersonal')->onDelete('cascade');
+            $table->foreign('cliente_id')->reference('id')->on('cliente')->onDelete('cascade');
         });
     }
 

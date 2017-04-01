@@ -16,7 +16,7 @@ class CreateDietasTable extends Migration
         Schema::create('dietas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombreDieta');
-            $table->string('descripcion');
+            $table->longText('descripcion');
             $table->integer('cliente_id');
             $table->integer('entrenadorPersonal_id');
             $table->timestamps();

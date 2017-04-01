@@ -18,10 +18,10 @@ class CreateEjerciciosTable extends Migration
             $table->string('nombreEjercicio');
             $table->string('foto');
             $table->string('video');
-            $table->string('descripcion');
+            $table->longText('descripcion');
             $table->string('zona');
-
             $table->timestamps();
+            $table->foreign('entrenamiento_id')->reference('id')->on('entrenamiento')->onDelete('cascade');
         });
     }
 
