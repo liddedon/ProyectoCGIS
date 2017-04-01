@@ -17,7 +17,7 @@ class Dieta extends Model
 
     public function Cliente ()
     {
-        return $this->hasOne('App\Cliente');
+        return $this->belongsTo('App\Cliente');
     }
 
     public function EntrenadorPersonal ()
