@@ -23,3 +23,7 @@ Route::resource('Dieta', 'DietaController');
 Route::resource('Entrenamiento', 'EntrenamientoController');
 Route::resource('Ejercicio', 'EjercicioController');
 Route::resource('Ejercicio_entrenamiento', 'Ejercicio_entrenamientoController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
