@@ -21,8 +21,8 @@ class CreateEntrenamientosTable extends Migration
             $table->dateTime('fechaFin');
             $table->longText('descripcion');
             $table->timestamps();
-            $table->foreign('entrenadorPersonal_id')->reference('id')->on('entrenadorPersonal')->onDelete('cascade');
-            $table->foreign('cliente_id')->reference('id')->on('cliente')->onDelete('cascade');
+            $table->foreign('entrenadorPersonal_id')->references('id')->on('entrenadorPersonal')->onDelete('cascade');
+            $table->foreign('cliente_id')->references('id')->on('cliente')->onDelete('cascade');
 
         });
     }

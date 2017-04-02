@@ -20,8 +20,8 @@ class CreateDietasTable extends Migration
             $table->integer('cliente_id');
             $table->integer('entrenadorPersonal_id');
             $table->timestamps();
-            $table->foreign('cliente_id')->reference('id')->on('cliente')->onDelete('cascade');
-            $table->foreign('entrenadorPersonal_id')->reference('id')->on('entrenadorPersonal')->onDelete('cascade');
+            $table->foreign('cliente_id')->references('id')->on('cliente')->onDelete('cascade');
+            $table->foreign('entrenadorPersonal_id')->references('id')->on('entrenadorPersonal')->onDelete('cascade');
 
         });
     }
