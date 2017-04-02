@@ -24,8 +24,8 @@ class CreateEjercicioEntrenamientosTable extends Migration
             $table->integer('numRepeticiones');
             $table->integer('numRepeticionesCompletadas');
             $table->time('duracion');
-            $table->foreign('entrenamiento_id')->references('id')->on('entrenamiento')->onDelete('cascade');
-            $table->foreign('ejercicio_id')->references('id')->on('ejercicio')->onDelete('cascade');
+            $table->foreign('entrenamiento_id')->references('id')->on('entrenamientos')->onDelete('cascade');
+            $table->foreign('ejercicio_id')->references('id')->on('ejercicios')->onDelete('cascade');
         });
     }
 

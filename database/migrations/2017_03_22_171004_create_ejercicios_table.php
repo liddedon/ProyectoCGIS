@@ -22,7 +22,7 @@ class CreateEjerciciosTable extends Migration
             $table->longText('descripcion');
             $table->string('zona');
             $table->timestamps();
-            $table->foreign('entrenamiento_id')->references('id')->on('entrenamiento')->onDelete('cascade');
+            $table->foreign('entrenamiento_id')->references('id')->on('entrenamientos')->onDelete('cascade');
         });
     }
 
