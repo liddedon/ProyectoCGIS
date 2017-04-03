@@ -26,12 +26,12 @@ class EntramientoController extends Controller
      */
     public function create()
     {
-        $entrenadorPersonals=EntrenadorPersonal::all()->pluck('nombre','id');
+        $entrenadorpersonals=Entrenadorpersonal::all()->pluck('nombre','id');
 
         $clientes=Cliente::all()->pluck('nombre','id');
 
 
-        return view('entrenamientos/create',['entrenadorPersonals'=>$entrenadorPersonals,'clientes'=>$clientes]);
+        return view('entrenamientos/create',['entrenadorpersonals'=>$entrenadorpersonals,'clientes'=>$clientes]);
 
     }
 

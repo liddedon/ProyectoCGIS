@@ -14,9 +14,9 @@ class User extends Authenticatable
         return $this->hasOne('App\Cliente');
     }
 
-    public function EntrenadorPersonal()
+    public function Entrenadorpersonal()
     {
-        return $this->hasOne('App\EntrenadorPersonal');
+        return $this->hasOne('App\Entrenadorpersonal');
     }
 
     /**
@@ -26,7 +26,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'surname','email', 'password',
+        'name','surname','email', 'password',
     ];
 
 

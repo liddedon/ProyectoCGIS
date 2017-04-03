@@ -15,8 +15,8 @@ class CreateEjerciciosTable extends Migration
     {
         Schema::create('ejercicios', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('entrenamiento_id');
-            $table->string('nombreEjercicio');
+            $table->unsignedInteger('entrenamiento_id');
+            $table->string('nombreejercicio');
             $table->string('foto');
             $table->string('video');
             $table->longText('descripcion');

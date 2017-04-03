@@ -39,8 +39,8 @@ class EntrenadorPersonalController extends Controller
      */
     public function index()
     {
-        $entrenadorPersonals = EntrenadorPersonal::all();
-        return view('entrenadorPersonals/index',['entrenadorPersonals'=>$entrenadorPersonals]);
+        $entrenadorpersonals = Entrenadorpersonal::all();
+        return view('entrenadorpersonals/index',['entrenadorpersonals'=>$entrenadorpersonals]);
 
     }
 
@@ -51,7 +51,7 @@ class EntrenadorPersonalController extends Controller
      */
     public function create()
     {
-        return view ('entrenadorPersonals/create');
+        return view ('entrenadorpersonals/create');
 
     }
 

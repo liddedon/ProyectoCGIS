@@ -32,9 +32,9 @@ class DietaController extends Controller
      */
     public function create()
     {
-        $entrenadorPersonals=EntrenadorPersonal::all()->pluck('nombre','id');
+        $entrenadorpersonals=Entrenadorpersonal::all()->pluck('nombre','id');
 
-        return view('dietas/create',['entrenadorPersonals'=>$entrenadorPersonals]);
+        return view('dietas/create',['entrenadorpersonals'=>$entrenadorpersonals]);
 
     }
 

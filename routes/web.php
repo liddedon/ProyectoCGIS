@@ -18,11 +18,11 @@ Route::get('/', function () {
 
 Route::resource('User', 'UserController');
 Route::resource('Cliente', 'ClienteController');
-Route::resource('EntrenadorPersonal', 'EntrenadorPersonalController');
+Route::resource('Entrenadorpersonal', 'EntrenadorpersonalController');
 Route::resource('Dieta', 'DietaController');
 Route::resource('Entrenamiento', 'EntrenamientoController');
 Route::resource('Ejercicio', 'EjercicioController');
-Route::resource('Ejercicio_entrenamiento', 'Ejercicio_entrenamientoController');
+
 
 Auth::routes();
 

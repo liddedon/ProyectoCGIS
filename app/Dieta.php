@@ -10,7 +10,7 @@ class Dieta extends Model
 
     //
     protected $fillable = [
-       'nombreDieta','descripcion','cliente_id','entrenadorPersonal_id',
+       'nombreDieta','descripcion','cliente_id','entrenadorpersonal_id',
     //,
 
     ];
@@ -20,8 +20,8 @@ class Dieta extends Model
         return $this->belongsTo('App\Cliente');
     }
 
-    public function EntrenadorPersonal ()
+    public function Entrenadorpersonal ()
     {
-        return $this->belongsTo('App\EntrenadorPersonal');
+        return $this->belongsTo('App\Entrenadorpersonal');
     }
 }

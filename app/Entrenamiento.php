@@ -8,19 +8,19 @@ class Entrenamiento extends Model
 {
 
     protected $fillable = [
-        'cliente_id','entrenadorPersonal_id','fechaInicio','fechaFin','descripcion',
+        'cliente_id','entrenadorpersonal_id','fechaInicio','fechaFin','descripcion',
 
     ];
-    public function EntrenadorPersonal()
+    public function entrenadorpersonal()
     {
-        return $this->belongsTo('App\EntrenadorPersonal');
+        return $this->belongsTo('App\Entrenadorpersonal');
     }
-    public function Cliente()
+    public function cliente()
     {
         return $this->belongsTo('App\Cliente');
     }
 
-    public function Ejercicios()
+    public function ejercicios()
     {
         return $this->belongsToMany('App\Ejercicios');
     }

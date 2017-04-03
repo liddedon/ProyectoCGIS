@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class EntrenadorPersonal extends Model
+class Entrenadorpersonal extends Model
 { use Notifiable;
 
     //

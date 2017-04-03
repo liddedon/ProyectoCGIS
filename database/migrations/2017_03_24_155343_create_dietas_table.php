@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEntrenamientosTable extends Migration
+class CreateDietasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreateEntrenamientosTable extends Migration
      */
     public function up()
     {
-        Schema::create('entrenamientos', function (Blueprint $table) {
+        Schema::create('dietas', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('cliente_id');
-            $table->integer('entrenadorPersonal_id');
-            $table->dateTime('fechaInicio');
-            $table->dateTime('fechaFin');
+            $table->string('nombreDieta');
             $table->longText('descripcion');
+            $table->unsignedInteger('cliente_id');
+            $table->unsignedInteger('entrenadorpersonal_id');
             $table->timestamps();
-            $table->foreign('entrenadorPersonal_id')->references('id')->on('entrenadorPersonals')->onDelete('cascade');
             $table->foreign('cliente_id')->references('id')->on('clientes')->onDelete('cascade');
+            $table->foreign('entrenadorpersonal_id')->references('id')->on('entrenadorpersonals')->onDelete('cascade');
 
         });
     }
@@ -34,6 +33,6 @@ class CreateEntrenamientosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('entrenamientos');
+        Schema::dropIfExists('dietas');
     }
 }
