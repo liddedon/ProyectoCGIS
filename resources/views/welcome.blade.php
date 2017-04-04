@@ -49,6 +49,7 @@
 
             .content {
                 text-align: center;
+                color: #37036f;
             }
 
 
@@ -135,16 +136,7 @@
 
 
                 </div>
-            <div class="flex-center position-ref">
-                <br>
-                Nuestro objetivo es fomentar y animar a la gente a practicar deporte y llevar una vida sana de forma práctica</br>
-                y cómoda, sin necesidad de ir al gimnasio. Facilitamos a usuarios de todas las edades y en cualquier tipo de</br>
-                condición física un modelo de entrenamiento para tener una rutina de trabajo diario adecuado según sus condiciones,</br>
-                y también dispondrán de una dieta acorde a sus necesidades si así lo desean.</br>
 
-
-
-            </div>
             </div>
         </div>
     </body>
