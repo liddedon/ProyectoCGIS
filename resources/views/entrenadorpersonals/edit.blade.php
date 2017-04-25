@@ -11,6 +11,7 @@
                         @include('flash::message')
 
                         {!! Form::model($entrenadorpersonal, [ 'route' => ['entrenadorpersonals.update',$entrenadorpersonal->id], 'method'=>'PUT', 'class'=>'form-inline']) !!}
+
                         <div class="form-group">
 
                         {!! Form::label('especialidad', 'Especialidad del entrenador') !!}

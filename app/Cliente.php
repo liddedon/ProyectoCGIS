@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cliente extends Model
 
-{ use  Notifiable;
+{
     //
     protected $fillable = [
         'fechaNacimiento','sexo','altura','peso','haceDeporte','numeroDeHoras','deporteCalle','deporteCasa',

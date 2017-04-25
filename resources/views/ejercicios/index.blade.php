@@ -5,12 +5,12 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Entrenadores</div>
+                    <div class="panel-heading">Ejercicios</div>
 
                     <div class="panel-body">
                         @include('flash::message')
-                        {!! Form::open(['route' => 'entrenadorpersonals.create', 'method' => 'get', 'class'=>'inline-important']) !!}
-                        {!!   Form::submit('Crear entrenador', ['class'=> 'btn btn-primary'])!!}
+                        {!! Form::open(['route' => 'ejercicios.create', 'method' => 'get', 'class'=>'inline-important']) !!}
+                        {!!   Form::submit('Crear ejercicio', ['class'=> 'btn btn-primary'])!!}
                         {!! Form::close() !!}
 
 
@@ -20,17 +20,17 @@
                                 <th>Nombre</th>
                                 <th colspan="2">Especialidad</th>
                             </tr>
-                            @foreach ($entrenadorpersonals as $entrenadorpersonal)
+                            @foreach ($ejercicios as $ejercicio)
                             <tr>
-                                <td>{{ $entrenadorpersonal->name }}</td>
+                                <td>{{ $ejercicio->nombreejercicio }}</td>
                                 <td>
-                                    {!! Form::open(['route' => ['entrenadorpersonals.edit',$entrenadorpersonal->id], 'method' => 'get']) !!}
+                                    {!! Form::open(['route' => ['ejercicios.edit',$ejercicio->id], 'method' => 'get']) !!}
                                     {!!   Form::submit('Editar', ['class'=> 'btn btn-warning'])!!}
                                     {!! Form::close() !!}
 
                                 </td>
                                 <td>
-                                    {!! Form::open(['route' => ['entrenadorpersonals.destroy',$entrenadorpersonal->id], 'method' => 'delete']) !!}
+                                    {!! Form::open(['route' => ['ejercicios.destroy',$ejercicio->id], 'method' => 'delete']) !!}
                                     {!!   Form::submit('Borrar', ['class'=> 'btn btn-danger','onclick'=> 'if(!confirm("¿Está seguro?"))event.preventDefault();'])!!}
                                     {!! Form::close() !!}
 

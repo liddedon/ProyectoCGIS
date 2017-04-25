@@ -5,16 +5,39 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Editar entrenador personal</div>
+                    <div class="panel-heading">Editar ejercicio</div>
 
                     <div class="panel-body">
                         @include('flash::message')
 
-                        {!! Form::model($entrenadorpersonal, [ 'route' => ['entrenadorpersonals.update',$entrenadorpersonal->id], 'method'=>'PUT', 'class'=>'form-inline']) !!}
+                        {!! Form::model($ejercicio, [ 'route' => ['ejercicios.update',$ejercicio->id], 'method'=>'PUT', 'class'=>'form-inline']) !!}
                         <div class="form-group">
+                            {!! Form::label('nombreejercicio', 'Nombre del ejercicio') !!}
+                            {!! Form::text('nombreejercicio',null,['class'=>'form-control', 'required', 'autofocus']) !!}
+                        </div>
 
-                        {!! Form::label('especialidad', 'Especialidad del entrenador') !!}
-                        {!! Form::text('especialidad',$entrenadorpersonal->especialidad,['class'=>'form-control', 'required', 'autofocus']) !!}
+                        <div class="form-group">
+                            {!! Form::label('foto', 'Foto') !!}
+                            {!! Form::text('foto',null,['class'=>'form-control']) !!}
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('video', 'Video') !!}
+                            {!! Form::text('video',null,['class'=>'form-control']) !!}
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('descripcion', 'Descripcion') !!}
+                            {!! Form::text('descripcion',null,['class'=>'form-control', 'required', 'autofocus']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('zona', 'Zona') !!}
+                            {!! Form::text('zona',null,['class'=>'form-control', 'required', 'autofocus']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!!Form::label('entrenamiento_id', 'Entrenamiento') !!}
+                            <br>
+                            {!! Form::select('entrenamiento_id', $entrenamientos, ['class' => 'form-control']) !!}
                         </div>
                         {!! Form::submit('Actualizar',['class'=>'btn-primary btn']) !!}
                         {!! Form::close() !!}

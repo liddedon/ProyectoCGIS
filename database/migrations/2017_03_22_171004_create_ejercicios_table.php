@@ -17,8 +17,8 @@ class CreateEjerciciosTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('entrenamiento_id');
             $table->string('nombreejercicio');
-            $table->string('foto');
-            $table->string('video');
+            $table->string('foto')->nullable();
+            $table->string('video')->nullable();
             $table->longText('descripcion');
             $table->string('zona');
             $table->timestamps();

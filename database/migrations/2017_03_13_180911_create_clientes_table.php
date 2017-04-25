@@ -17,8 +17,8 @@ class CreateClientesTable extends Migration
             $table->increments('id');
             $table->dateTime('fechaNacimiento');
             $table->string('sexo');
-            $table->numeric('altura');
-            $table->numeric('peso');
+            $table->unsignedInteger('altura');
+            $table->decimal('peso',4,1);
             $table->boolean('haceDeporte');
             $table->integer('numeroDeHoras');
             $table->boolean('deporteCalle');
@@ -31,6 +31,8 @@ class CreateClientesTable extends Migration
             $table->string('enfermedadesCronicas');
             $table->boolean('embarazada');
             $table->string('medicación');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

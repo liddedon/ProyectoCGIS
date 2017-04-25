@@ -59,6 +59,8 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
+            'especialidad' => 'nullable|max:255',
+            'haceDeporte' => 'nullable|boolean',
             'password' => 'required|min:6|confirmed',
         ]);
     }
@@ -78,6 +80,15 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
 
+        if(isset($data['especialidad'])){
+            $entrenadorpersonal = new Entrenadorpersonal($data);
+            $entrenadorpersonal->user_id=$user->id;
+            $entrenadorpersonal->save();
+        }elseif(isset($data['haceDeporte'])){
+            $cliente = new Cliente($data);
+            $cliente->user_id=$user->id;
+            $cliente->save();
+        }
      return $user;
     }
 

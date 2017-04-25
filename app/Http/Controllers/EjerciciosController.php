@@ -27,7 +27,7 @@ class EjerciciosController extends Controller
      */
     public function create()
     {
-        $entrenamientos=Entrenamiento::all()->pluck('id');
+        $entrenamientos=Entrenamiento::all()->pluck('entrenadorpersonal_id','id');
 
         return view('ejercicios/create',['entrenamientos'=>$entrenamientos]);
     }
@@ -41,9 +41,9 @@ class EjerciciosController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'nombreEjercicio'=>'required|max:255',
-            'foto'=>'required|max:255',
-            'video'=>'required|max:255',
+            'nombreejercicio'=>'required|max:255',
+            'foto'=>'nullable|max:255',
+            'video'=>'nullable|max:255',
             'descripcion'=>'required|max:255',
             'zona'=>'required|max:255',
             'entrenamiento_id'=>'required|exists:entrenamientos,id'
@@ -74,7 +74,7 @@ class EjerciciosController extends Controller
      */
     public function edit(Ejercicios $ejercicio)
     {
-        $entrenamientos=Entrenamiento::all()->pluck('id');
+        $entrenamientos=Entrenamiento::all()->pluck('descripcion','id');
 
         return view('ejercicios/edit',['ejercicio'=>$ejercicio,'entrenamientos'=>$entrenamientos]);
     }
@@ -89,15 +89,15 @@ class EjerciciosController extends Controller
     public function update(Request $request,Ejercicios $ejercicio)
     {
         $this->validate($request,[
-            'nombreEjercicio'=>'required|max:255',
-            'foto'=>'required|max:255',
-            'video'=>'required|max:255',
+            'nombreejercicio'=>'required|max:255',
+            'foto'=>'nullable|max:255',
+            'video'=>'nullable|max:255',
             'descripcion'=>'required|max:255',
             'zona'=>'required|max:255',
             'entrenamiento_id'=>'required|exists:entrenamientos,id'
         ]);
 
-        $ejercicio = fill($request->all());
+        $ejercicio->fill($request->all());
         $ejercicio->save();
         flash('Ejercicio modificado correctamente');
         return redirect()->route('ejercicios.index');

@@ -24,6 +24,7 @@
                             </div>
                         </div>
 
+
                         <div class="form-group{{ $errors->has('surname') ? ' has-error' : '' }}">
                             <label for="surname" class="col-md-4 control-label">Apellidos</label>
 
@@ -48,6 +49,20 @@
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('especialidad') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Especialidad</label>
+
+                            <div class="col-md-6">
+                                <input id="especialidad" type="text" class="form-control" name="especialidad" value="{{ old('especialidad') }}" required >
+
+                                @if ($errors->has('especialidad'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('especialidad') }}</strong>
                                     </span>
                                 @endif
                             </div>

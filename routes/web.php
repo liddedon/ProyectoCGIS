@@ -25,7 +25,7 @@ Route::resource('clientes', 'ClienteController');
 Route::resource('entrenadorpersonals', 'EntrenadorpersonalController');
 Route::resource('dietas', 'DietaController');
 Route::resource('entrenamientos', 'EntrenamientoController');
-Route::resource('ejercicios', 'EjercicioController');
+Route::resource('ejercicios', 'EjerciciosController');
 
 
 Auth::routes();

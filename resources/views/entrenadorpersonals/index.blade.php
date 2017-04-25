@@ -17,12 +17,13 @@
                         <br><br>
                         <table class="table table-striped table-bordered">
                             <tr>
-                                <th>Nombre</th>
-                                <th colspan="2">Especialidad</th>
+                                <th>Especialidad</th>
+                                <th colspan="2">Acciones</th>
                             </tr>
                             @foreach ($entrenadorpersonals as $entrenadorpersonal)
                             <tr>
-                                <td>{{ $entrenadorpersonal->name }}</td>
+                                <td>{{$entrenadorpersonal->especialidad}}</td>
+
                                 <td>
                                     {!! Form::open(['route' => ['entrenadorpersonals.edit',$entrenadorpersonal->id], 'method' => 'get']) !!}
                                     {!!   Form::submit('Editar', ['class'=> 'btn btn-warning'])!!}

@@ -39,16 +39,7 @@ class EntrenadorpersonalController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required|max:255',
-            'surname' => 'required|max:255',
-            'email' => 'required|max:255',
-            'especialidad' => 'required|max:255'
-        ]);
-        $entrenadorpersonal = new Entrenadorpersonal($request->all());
-        $entrenadorpersonal->save();
-        flash('Entrenador Personal creado correctamente');
-        return redirect()->route('entrenadorpersonals.index');
+
     }
 
     /**
@@ -88,6 +79,7 @@ class EntrenadorpersonalController extends Controller
             'especialidad' => 'required|max:255'
         ]);
         $entrenadorpersonal = fill($request->all());
+        $user = $entrenadorpersonal->user;
         $entrenadorpersonal->save();
         flash('Entrenador Personal modificado correctamente');
         return redirect()->route('entrenadorpersonals.index');

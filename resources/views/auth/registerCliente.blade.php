@@ -53,6 +53,24 @@
                                 </div>
                             </div>
 
+                            <div class="form-group{{ $errors->has('haceDeporte') ? ' has-error' : '' }}">
+                                <label for="haceDeporte" class="col-md-4 control-label">¿Haces deporte?</label>
+
+                                <div class="col-md-6">
+                                    <input id="haceDeporte" type="checkbox" class="form-control" name="haceDeporte" value="{{ old('haceDeporte') }}" required >
+
+                                {{--<select class="form-control" name="haceDeporte">
+                                    <option value = "1">Si</option>
+                                    <option value = "0">No</option>
+                                </select>--}}
+                                    @if ($errors->has('haceDeporte'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('haceDeporte') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                 <label for="password" class="col-md-4 control-label">Contraseña</label>
 
