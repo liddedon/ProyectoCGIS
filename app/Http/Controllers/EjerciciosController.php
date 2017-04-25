@@ -74,7 +74,7 @@ class EjerciciosController extends Controller
      */
     public function edit(Ejercicios $ejercicio)
     {
-        $entrenamientos=Entrenamiento::all()->pluck('descripcion','id');
+        $entrenamientos=Entrenamiento::all()->pluck('entrenadorpersonal_id','id');
 
         return view('ejercicios/edit',['ejercicio'=>$ejercicio,'entrenamientos'=>$entrenamientos]);
     }

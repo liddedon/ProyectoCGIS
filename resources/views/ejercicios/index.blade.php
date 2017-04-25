@@ -18,7 +18,7 @@
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th>Nombre</th>
-                                <th colspan="2">Especialidad</th>
+                                <th colspan="2">Accion</th>
                             </tr>
                             @foreach ($ejercicios as $ejercicio)
                             <tr>
