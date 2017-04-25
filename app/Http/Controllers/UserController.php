@@ -10,22 +10,6 @@ use App\Cliente;
 
 class UserController extends Controller
 {
-
-   /** public function cliente_de_usuario_1(){
-        $Cliente = User::find(1)->cliente;
-        $usuario_id = User::find(1)->cliente->usuario_id;
-    }
-
-    public function entrenadorPersonal_de_usuario_1(){
-        $entrenadorPersonal = User::find(1)->entrenadorPersonal;
-        $usuario_id = User::find(1)->entrenadorPersonal->usuario_id;
-
-
-
-
-}
-
-*/
         /**
          * Display a listing of the resource.
          *
@@ -37,10 +21,8 @@ class UserController extends Controller
 
     public function index()
     {
-
         $users = User::all();
         return view('users/index',['users'=>$users]);
-
     }
 
     /**
@@ -51,7 +33,6 @@ class UserController extends Controller
     public function create()
     {
         return view ('users/create');
-
     }
 
     /**
@@ -62,7 +43,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'surname' => 'required|max:255',
+            'email' => 'required|max:255',
+            'password' => 'required|max:255',
+            'eresCliente'=>'required|boolean',
+        ]);
+        $user = new User($request->all());
+        $user->save();
+        flash('Usuario creado correctamente');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -71,9 +62,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return view('users/show',['user'=>$user]);
     }
 
     /**
@@ -82,10 +73,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
-    }
+        return view('users/edit',['user'=>$user]);
+     }
 
     /**
      * Update the specified resource in storage.
@@ -94,9 +85,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'surname' => 'required|max:255',
+            'email' => 'required|max:255',
+            'password' => 'required|max:255',
+        ]);
+        $user = fill($request->all());
+        $user->save();
+        flash('Usuario modificado correctamente');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -105,8 +105,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        flash('Usuario borrado correctamente');
+        return redirect()->route('users.index');
     }
 }

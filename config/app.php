@@ -2,6 +2,9 @@
 
 return [
 
+
+
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -137,6 +140,8 @@ return [
 
     'providers' => [
 
+        Collective\Html\HtmlServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
         /*
          * Laravel Framework Service Providers...
          */
@@ -191,6 +196,9 @@ return [
     */
 
     'aliases' => [
+
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,

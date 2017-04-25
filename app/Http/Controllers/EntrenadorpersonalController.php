@@ -5,32 +5,8 @@ namespace App\Http\Controllers;
 use App\EntrenadorPersonal;
 use Illuminate\Http\Request;
 
-class EntrenadorPersonalController extends Controller
+class EntrenadorpersonalController extends Controller
 {
-
-    /**    public function usuario_de_entrenadorPersonal_1(){
-        $user = EntrenadorPersonal::find(1)->user;
-        $usuario_id = EntrenadorPersonal::find(1)->user->usuario_id;
-    }
-    //¿Qué hacemos exactamente?
-        public function validar_dieta_de_entrenadorPersonal($id)
-        {
-            $dietas = EntrenadorPersonal::find($id)->dietas;
-            foreach ($dietas as $dieta) {
-                $dieta->valido = true;
-                $dieta->save();
-            }
-        }
-
-        public function validar_entrenamiento_de_entrenadorPersonal($id){
-            $entrenamientos= EntrenadorPersonal::find($id)->entrenamientos;
-            foreach ($entrenamientos as $entrenamiento ){
-                $entrenamiento->valido = true;
-                $entrenamiento->save();
-            }
-
-
-    }*/
 
     /**
      * Display a listing of the resource.
@@ -63,7 +39,16 @@ class EntrenadorPersonalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'surname' => 'required|max:255',
+            'email' => 'required|max:255',
+            'especialidad' => 'required|max:255'
+        ]);
+        $entrenadorpersonal = new Entrenadorpersonal($request->all());
+        $entrenadorpersonal->save();
+        flash('Entrenador Personal creado correctamente');
+        return redirect()->route('entrenadorpersonals.index');
     }
 
     /**
@@ -72,9 +57,10 @@ class EntrenadorPersonalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Entrenadorpersonal $entrenadorpersonal)
     {
-        //
+        return view('entrenadorpersonals/show',['entrenadorpersonal'=>$entrenadorpersonal]);
+
     }
 
     /**
@@ -83,9 +69,10 @@ class EntrenadorPersonalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Entrenadorpersonal $entrenadorpersonal)
     {
-        //
+        return view('entrenadorpersonals/edit',['entrenadorpersonal'=>$entrenadorpersonal]);
+
     }
 
     /**
@@ -95,9 +82,15 @@ class EntrenadorPersonalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Entrenadorpersonal $entrenadorpersonal)
     {
-        //
+        $this->validate($request, [
+            'especialidad' => 'required|max:255'
+        ]);
+        $entrenadorpersonal = fill($request->all());
+        $entrenadorpersonal->save();
+        flash('Entrenador Personal modificado correctamente');
+        return redirect()->route('entrenadorpersonals.index');
     }
 
     /**
@@ -106,8 +99,10 @@ class EntrenadorPersonalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Entrenadorpersonal $entrenadorpersonal)
     {
-        //
+        $entrenadorpersonal->delete();
+        flash('Entrenador personal borrado correctamente');
+        return redirect()->route('entrenadorpersonals.index');
     }
 }

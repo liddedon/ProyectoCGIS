@@ -2,28 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Cliente;
+use App\Dieta;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
-   /** public function usuario_de_cliente_1(){
-        $User = Cliente::find(1)->user;
-        $usuario_id = Cliente::find(1)->user->usuario_id;
-    }
-
-    public function dieta_de_cliente_1(){
-        $dieta = Cliente::find(1)->dieta;
-        $usuario_id = Cliente::find(1)->dieta->usuario_id;
-    }
-
-    public function validar_entrenamiento_de_Cliente($id){
-        $entrenamientos = Cliente::find($id)->entrenamientos;
-        foreach ($entrenamientos as $entrenamiento) {
-            $entrenamiento->valido = true;
-            $entrenamiento->save();
-        }
-
-    }*/
     /**
      * Display a listing of the resource.
      *
@@ -43,9 +27,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        $entrenamientos= Entrenamiento :: all()->pluck('id');
-
-        return view('clientes/create',['entrenamientos'=>$entrenamientos]);
+        return view('clientes/create');
 
     }
 
@@ -57,7 +39,33 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'surname' => 'required|max:255',
+            'email' => 'required|max:255',
+            'fechaNacimiento' => 'required|date|after:now',
+            'sexo' => 'required|max:255',
+            'altura' =>'required|numeric',
+            'peso' =>'required|numeric',
+            'haceDeporte' => 'required|boolean',
+            'numeroDeHoras' => 'required|integer',
+            'deporteCalle' => 'required|boolean',
+            'deporteCasa' => 'required|boolean',
+            'quiereDiete' => 'required|boolean',
+            'observaciones' => 'required|max:255',
+            'problemasMusculares' => 'required|boolean',
+            'problemasCardiovasculares' => 'required|boolean',
+            'hipertension' => 'required|boolean',
+            'enfermedadesCronicas' => 'required|max:255',
+            'embarazada' => 'required|boolean',
+            'medicacion' => 'required|max:255'
+
+        ]);
+        $cliente = new Cliente($request->all());
+        $cliente->save();
+        flash('Cliente creado correctamente');
+        return redirect()->route('clientes.index');
+
     }
 
     /**
@@ -66,9 +74,10 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Cliente $cliente)
     {
-        //
+        return view('clientes/show',['cliente'=>$cliente]);
+
     }
 
     /**
@@ -77,9 +86,9 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Cliente $cliente)
     {
-        //
+        return view('clientes/edit',['cliente'=>$cliente]);
     }
 
     /**
@@ -89,9 +98,31 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Cliente $cliente)
     {
-        //
+        $this->validate($request, [
+            'fechaNacimiento' => 'required|date|after:now',
+            'sexo' => 'required|max:255',
+            'altura' =>'required|numeric',
+            'peso' =>'required|numeric',
+            'haceDeporte' => 'required|boolean',
+            'numeroDeHoras' => 'required|integer',
+            'deporteCalle' => 'required|boolean',
+            'deporteCasa' => 'required|boolean',
+            'quiereDiete' => 'required|boolean',
+            'observaciones' => 'required|max:255',
+            'problemasMusculares' => 'required|boolean',
+            'problemasCardiovasculares' => 'required:boolean',
+            'hipertension' => 'required|boolean',
+            'enfermedadesCronicas' => 'required|max:255',
+            'embarazada' => 'required|boolean',
+            'medicacion' => 'required|max:255'
+
+        ]);
+        $cliente = fill($request->all());
+        $cliente->save();
+        flash('Cliente modificado correctamente');
+        return redirect()->route('clientes.index');
     }
 
     /**
@@ -100,8 +131,10 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Cliente $cliente)
     {
-        //
+        $cliente->delete();
+        flash('Cliente borrado correctamente');
+        return redirect()->route('clientes.index');
     }
 }

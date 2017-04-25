@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Cliente;
+use App\Entrenadorpersonal;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -19,6 +21,12 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
+
+/*    public function showRegistrationForm()
+    {
+        return view('auth.register');
+
+    }*/
 
     use RegistersUsers;
 
@@ -63,11 +71,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user=User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+     return $user;
     }
+
+
 }

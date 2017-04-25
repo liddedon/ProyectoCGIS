@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Entrenadorpersonal extends Model
-{ use Notifiable;
+{ //use Notifiable;
 
     //
     protected $fillable = [

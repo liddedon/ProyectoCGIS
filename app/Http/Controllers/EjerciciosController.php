@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Ejercicios;
+use App\Entrenamiento;
 use Illuminate\Http\Request;
 
 class EjerciciosController extends Controller
@@ -25,12 +26,10 @@ class EjerciciosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    { $ejercicios=Ejercicio::all()->pluck('id');
+    {
+        $entrenamientos=Entrenamiento::all()->pluck('id');
 
-
-        return view('ejercicios/create',['ejercicios'=>$ejercicios]);
-
-        //
+        return view('ejercicios/create',['entrenamientos'=>$entrenamientos]);
     }
 
     /**
@@ -41,7 +40,19 @@ class EjerciciosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'nombreEjercicio'=>'required|max:255',
+            'foto'=>'required|max:255',
+            'video'=>'required|max:255',
+            'descripcion'=>'required|max:255',
+            'zona'=>'required|max:255',
+            'entrenamiento_id'=>'required|exists:entrenamientos,id'
+        ]);
+
+        $ejercicio = new Ejercicios($request->all());
+        $ejercicio->save();
+        flash('Ejercicio creado correctamente');
+        return redirect()->route('ejercicios.index');
     }
 
     /**
@@ -50,9 +61,9 @@ class EjerciciosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Ejercicios $ejercicio)
     {
-        //
+        return view('ejercicios/show',['ejercicio'=>$ejercicio]);
     }
 
     /**
@@ -61,9 +72,11 @@ class EjerciciosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Ejercicios $ejercicio)
     {
-        //
+        $entrenamientos=Entrenamiento::all()->pluck('id');
+
+        return view('ejercicios/edit',['ejercicio'=>$ejercicio,'entrenamientos'=>$entrenamientos]);
     }
 
     /**
@@ -73,9 +86,21 @@ class EjerciciosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Ejercicios $ejercicio)
     {
-        //
+        $this->validate($request,[
+            'nombreEjercicio'=>'required|max:255',
+            'foto'=>'required|max:255',
+            'video'=>'required|max:255',
+            'descripcion'=>'required|max:255',
+            'zona'=>'required|max:255',
+            'entrenamiento_id'=>'required|exists:entrenamientos,id'
+        ]);
+
+        $ejercicio = fill($request->all());
+        $ejercicio->save();
+        flash('Ejercicio modificado correctamente');
+        return redirect()->route('ejercicios.index');
     }
 
     /**
@@ -84,8 +109,10 @@ class EjerciciosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Ejercicios $ejercicio)
     {
-        //
+        $ejercicio->delete();
+        flash('Ejercicio borrado correctamente');
+        return redirect()->route('ejercicios.index');
     }
 }

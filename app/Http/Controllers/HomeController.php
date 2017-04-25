@@ -23,6 +23,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+       /* if (count($user->Cliente)){
+        return view('register.blade');
+        }else{
+        return view('registerCliente.blade');
+        }*/
         return view('home');
     }
 }

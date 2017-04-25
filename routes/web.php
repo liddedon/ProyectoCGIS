@@ -15,15 +15,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/registerCliente', function () {
+    return view('auth.registerCliente');
+});
 
-Route::resource('User', 'UserController');
-Route::resource('Cliente', 'ClienteController');
-Route::resource('Entrenadorpersonal', 'EntrenadorpersonalController');
-Route::resource('Dieta', 'DietaController');
-Route::resource('Entrenamiento', 'EntrenamientoController');
-Route::resource('Ejercicio', 'EjercicioController');
+
+Route::resource('users', 'UserController');
+Route::resource('clientes', 'ClienteController');
+Route::resource('entrenadorpersonals', 'EntrenadorpersonalController');
+Route::resource('dietas', 'DietaController');
+Route::resource('entrenamientos', 'EntrenamientoController');
+Route::resource('ejercicios', 'EjercicioController');
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('Cliente', 'ClienteController@index')->name('Cliente.index');
+Route::get('Dieta', 'DietaController@store')->name('Dieta.store');

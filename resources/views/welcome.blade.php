@@ -83,10 +83,13 @@
                         <a href="{{ url('/home') }}">Home</a>
                     @else
                         <a href="{{ url('/login') }}">Inicia sesión</a>
-                        <a href="{{ url('/register') }}">Regístrate</a>
+                        <a href="{{ url('/registerCliente') }}">Regístrate como cliente</a>
+                        <a href="{{ url('/register') }}">Regístrate como entrenador</a>
+                    @endif
 
                 </div>
-                  <div class="top-left links">
+
+        <div class="top-left links">
                     <table>
                         <tr>
                          <th><img src="http://k30.kn3.net/taringa/5/A/F/6/A/0/soiuniko/749.gif" alt="HTML5 Icon"
@@ -117,7 +120,6 @@
 
 
 
-            @endif
 
 
         <div class="content">

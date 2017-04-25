@@ -2,20 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Dieta;
+use App\Ejercicios;
+use App\Entrenadorpersonal;
+use App\Entrenamiento;
 use Illuminate\Http\Request;
 
-class DietaController extends Controller
+class EntrenamientoController extends Controller
 {
-        /**
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $dietas = Dieta::all();
-        return view('dietas/index',['dietas'=>$dietas]);
+        $entrenamientos = Entrenamiento::all();
+        return view('entrenamientos/index',['entrenamientos'=>$entrenamientos]);
 
     }
 
@@ -28,8 +31,11 @@ class DietaController extends Controller
     {
         $entrenadorpersonals=Entrenadorpersonal::all()->pluck('name','id');
         $clientes=Cliente::all()->pluck('name','id');
+        $ejercicios=Ejercicios::all()->pluck('id');
 
-        return view('dietas/create',['entrenadorpersonals'=>$entrenadorpersonals,'clientes'=>$clientes]);
+
+        return view('entrenamientos/create',['entrenadorpersonals'=>$entrenadorpersonals,'clientes'=>$clientes,
+                                                'ejercicios'=>$ejercicios]);
 
     }
 
@@ -42,16 +48,17 @@ class DietaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'nombreDieta'=>'required|max:255',
+            'fechaInicio'=>'required|date|after:now',
+            'fechaFin' =>'required|date|after:now',
             'descripcion'=>'required|max:255',
             'cliente_id'=>'required|exists:clientes,id',
             'entrenadorpersonal_id'=>'required|exists:entrenadorpersonals,id'
         ]);
+        $entrenamiento = new Entrenamiento($request->all());
+        $entrenamiento->save();
+        flash('Entrenamiento creado correctamente');
+        return redirect()->route('entrenamientos.index');
 
-        $dieta = new Dieta($request->all());
-        $dieta->save();
-        flash('Dieta creada correctamente');
-        return redirect()->route('dietas.index');
     }
 
     /**
@@ -60,9 +67,9 @@ class DietaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Dieta $dieta)
+    public function show(Entrenamiento $entrenamiento)
     {
-        return view('dietas/show',['dieta'=>$dieta]);
+        return view('entrenamientos/show',['entrenamiento'=>$entrenamiento]);
 
     }
 
@@ -72,12 +79,15 @@ class DietaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dieta $dieta)
+    public function edit(Entrenamiento $entrenamiento)
     {
         $entrenadorpersonals=Entrenadorpersonal::all()->pluck('name','id');
         $clientes=Cliente::all()->pluck('name','id');
+        $ejercicios=Ejercicios::all()->pluck('id');
 
-        return view('dietas/edit',['dieta'=>$dieta,'entrenadorpersonals'=>$entrenadorpersonals,'clientes'=>$clientes]);
+
+        return view('entrenamientos/edit',['entrenamiento'=>$entrenamiento,'entrenadorpersonals'=>$entrenadorpersonals,'clientes'=>$clientes,
+            'ejercicios'=>$ejercicios]);
 
     }
 
@@ -88,19 +98,19 @@ class DietaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Dieta $dieta)
+    public function update(Request $request,Entrenamiento $entrenamiento)
     {
         $this->validate($request,[
-            'nombreDieta'=>'required|max:255',
+            'fechaInicio'=>'required|date|after:now',
+            'fechaFin' =>'required|date|after:now',
             'descripcion'=>'required|max:255',
             'cliente_id'=>'required|exists:clientes,id',
             'entrenadorpersonal_id'=>'required|exists:entrenadorpersonals,id'
         ]);
-
-        $dieta = fill($request->all());
-        $dieta->save();
-        flash('Dieta modificada correctamente');
-        return redirect()->route('dietas.index');
+        $entrenamiento = fill($request->all());
+        $entrenamiento->save();
+        flash('Entrenamiento modificado correctamente');
+        return redirect()->route('entrenamientos.index');
     }
 
     /**
@@ -109,10 +119,10 @@ class DietaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dieta $dieta)
+    public function destroy(Entrenamiento $entrenamiento)
     {
-        $dieta->delete();
-        flash('Dieta borrado correctamente');
-        return redirect()->route('dietas.index');
+        $entrenamiento->delete();
+        flash('Entrenamiento borrado correctamente');
+        return redirect()->route('entrenamientos.index');
     }
 }

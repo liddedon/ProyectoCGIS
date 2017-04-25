@@ -17,8 +17,8 @@ class CreateClientesTable extends Migration
             $table->increments('id');
             $table->dateTime('fechaNacimiento');
             $table->string('sexo');
-            $table->float('altura');
-            $table->float('peso');
+            $table->numeric('altura');
+            $table->numeric('peso');
             $table->boolean('haceDeporte');
             $table->integer('numeroDeHoras');
             $table->boolean('deporteCalle');
