@@ -32,13 +32,14 @@
                             {!! Form::label('descripcion', 'Descripcion') !!}
                             {!! Form::text('descripcion',null,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
+
                         <div class="form-group">
                             {!! Form::label('zona', 'Zona') !!}
                             {!! Form::text('zona',null,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
+
                         <div class="form-group">
                             {!!Form::label('entrenamiento_id', 'Entrenamiento') !!}
-                            <br>
                             {!! Form::select('entrenamiento_id', $entrenamientos, ['class' => 'form-control']) !!}
                         </div>
 

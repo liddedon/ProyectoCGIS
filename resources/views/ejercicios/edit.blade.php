@@ -13,26 +13,26 @@
                         {!! Form::model($ejercicio, [ 'route' => ['ejercicios.update',$ejercicio->id], 'method'=>'PUT', 'class'=>'form-inline']) !!}
                         <div class="form-group">
                             {!! Form::label('nombreejercicio', 'Nombre del ejercicio') !!}
-                            {!! Form::text('nombreejercicio',null,['class'=>'form-control', 'required', 'autofocus']) !!}
+                            {!! Form::text('nombreejercicio',$ejercicio->nombreejercicio,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
 
                         <div class="form-group">
                             {!! Form::label('foto', 'Foto') !!}
-                            {!! Form::text('foto',null,['class'=>'form-control']) !!}
+                            {!! Form::text('foto',$ejercicio->foto,['class'=>'form-control']) !!}
                         </div>
 
                         <div class="form-group">
                             {!! Form::label('video', 'Video') !!}
-                            {!! Form::text('video',null,['class'=>'form-control']) !!}
+                            {!! Form::text('video',$ejercicio->video,['class'=>'form-control']) !!}
                         </div>
 
                         <div class="form-group">
                             {!! Form::label('descripcion', 'Descripcion') !!}
-                            {!! Form::text('descripcion',null,['class'=>'form-control', 'required', 'autofocus']) !!}
+                            {!! Form::text('descripcion',$ejercicio->descripcion,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('zona', 'Zona') !!}
-                            {!! Form::text('zona',null,['class'=>'form-control', 'required', 'autofocus']) !!}
+                            {!! Form::text('zona',$ejercicio->zona,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
                         <div class="form-group">
                             {!!Form::label('entrenamiento_id', 'Entrenamiento') !!}

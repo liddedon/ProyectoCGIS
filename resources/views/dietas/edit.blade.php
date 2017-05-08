@@ -5,12 +5,12 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Crear dieta</div>
+                    <div class="panel-heading">Editar dieta</div>
 
                     <div class="panel-body">
                         @include('flash::message')
 
-                        {!! Form::model($dieta, [ 'route' => ['dietas.update',$cita->id], 'method'=>'PUT']) !!}
+                        {!! Form::model($dieta, [ 'route' => ['dietas.update',$dieta->id], 'method'=>'PUT']) !!}
 
                         <div class="form-group">
                             {!! Form::label('nombreDieta', 'Nombre de la dieta') !!}

@@ -13,10 +13,25 @@
                         {!! Form::model($entrenadorpersonal, [ 'route' => ['entrenadorpersonals.update',$entrenadorpersonal->id], 'method'=>'PUT', 'class'=>'form-inline']) !!}
 
                         <div class="form-group">
+                            {!! Form::label('name', 'Nombre') !!}
+                            {!! Form::text('name', $entrenadorpersonal->name, ['class'=>'form-control', 'required', 'autofocus']) !!}
+                        </div>
 
+                        <div class="form-group">
+                            {!! Form::label('surname', 'Apellidos') !!}
+                            {!! Form::text('surname', $entrenadorpersonal->surname, ['class'=>'form-control', 'required', 'autofocus']) !!}
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('email', 'Email') !!}
+                            {!! Form::text('email', $entrenadorpersonal->email, ['class'=>'form-control', 'required', 'autofocus']) !!}
+                        </div>
+
+                        <div class="form-group">
                         {!! Form::label('especialidad', 'Especialidad del entrenador') !!}
                         {!! Form::text('especialidad',$entrenadorpersonal->especialidad,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
+
                         {!! Form::submit('Actualizar',['class'=>'btn-primary btn']) !!}
                         {!! Form::close() !!}
                     </div>

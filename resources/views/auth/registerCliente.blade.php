@@ -57,12 +57,12 @@
                                 <label for="haceDeporte" class="col-md-4 control-label">¿Haces deporte?</label>
 
                                 <div class="col-md-6">
-                                    <input id="haceDeporte" type="checkbox" class="form-control" name="haceDeporte" value="{{ old('haceDeporte') }}" required >
+                                     {{--<input id="haceDeporte" type="checkbox" class="form-control" name="haceDeporte" value="{{ old('haceDeporte') }}" required > --}}
 
-                                {{--<select class="form-control" name="haceDeporte">
+                                <select class="form-control" name="haceDeporte">
                                     <option value = "1">Si</option>
                                     <option value = "0">No</option>
-                                </select>--}}
+                                </select>
                                     @if ($errors->has('haceDeporte'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('haceDeporte') }}</strong>
