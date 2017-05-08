@@ -15,22 +15,22 @@ class CreateClientesTable extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->increments('id');
-            $table->dateTime('fechaNacimiento');
-            $table->string('sexo');
-            $table->unsignedInteger('altura');
-            $table->decimal('peso',4,1);
+            $table->dateTime('fechaNacimiento')->nullable();
+            $table->string('sexo')->nullable();
+            $table->unsignedInteger('altura')->nullable();
+            $table->decimal('peso',4,1)->nullable();
             $table->boolean('haceDeporte');
-            $table->integer('numeroDeHoras');
-            $table->boolean('deporteCalle');
-            $table->boolean ('deporteCasa');
-            $table->boolean ('quiereDieta');
-            $table->longText('observaciones');
-            $table->boolean('problemasMusculares');
-            $table->boolean('problemasCardiovasculares');
-            $table->boolean('hipertensión');
-            $table->string('enfermedadesCronicas');
-            $table->boolean('embarazada');
-            $table->string('medicación');
+            $table->integer('numeroDeHoras')->nullable();
+            $table->boolean('deporteCalle')->nullable();
+            $table->boolean ('deporteCasa')->nullable();
+            $table->boolean ('quiereDieta')->nullable();
+            $table->longText('observaciones')->nullable();
+            $table->boolean('problemasMusculares')->nullable();
+            $table->boolean('problemasCardiovasculares')->nullable();
+            $table->boolean('hipertensión')->nullable();
+            $table->string('enfermedadesCronicas')->nullable();
+            $table->boolean('embarazada')->nullable();
+            $table->string('medicación')->nullable();
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
