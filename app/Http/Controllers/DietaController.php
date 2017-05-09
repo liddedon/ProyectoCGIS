@@ -26,8 +26,8 @@ class DietaController extends Controller
      */
     public function create()
     {
-        $entrenadorpersonals=Entrenadorpersonal::all()->pluck('name','id');
-        $clientes=Cliente::all()->pluck('name','id');
+        $entrenadorpersonals=Entrenadorpersonal::all()->pluck('id');
+        $clientes=Cliente::all()->pluck('id');
 
         return view('dietas/create',['entrenadorpersonals'=>$entrenadorpersonals,'clientes'=>$clientes]);
 

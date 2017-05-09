@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dieta extends Model
 {
-    use Notifiable;
 
     //
     protected $fillable = [

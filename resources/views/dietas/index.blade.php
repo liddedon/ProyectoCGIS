@@ -20,7 +20,7 @@
                                 <th>Descripcion</th>
                                 <th>Cliente</th>
                                 <th>Entrenador personal</th>
-                                <th colspan="2">Acciones</th>
+                                <th colspan="2">Accion</th>
                             </tr>
 
                             @foreach ($dietas as $dieta)
@@ -35,6 +35,12 @@
                                         {!! Form::open(['route' => ['dietas.edit',$dieta->id], 'method' => 'get']) !!}
                                         {!!   Form::submit('Editar', ['class'=> 'btn btn-warning'])!!}
                                         {!! Form::close() !!}
+                                    </td>
+                                    <td>
+                                        {!! Form::open(['route' => ['dietas.destroy',$dieta->id], 'method' => 'delete']) !!}
+                                        {!!   Form::submit('Borrar', ['class'=> 'btn btn-danger','onclick'=> 'if(!confirm("¿Está seguro?"))event.preventDefault();'])!!}
+                                        {!! Form::close() !!}
+
                                     </td>
 
                                 </tr>

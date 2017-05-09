@@ -48,9 +48,9 @@ class EntrenadorpersonalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Entrenadorpersonal $entrenadorpersonal)
+    public function show(Entrenadorpersonal $entrenadorpersonals)
     {
-        return view('entrenadorpersonals/show',['entrenadorpersonal'=>$entrenadorpersonal]);
+        return view('entrenadorpersonals/show',['entrenadorpersonals'=>$entrenadorpersonals]);
 
     }
 
@@ -60,9 +60,9 @@ class EntrenadorpersonalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Entrenadorpersonal $entrenadorpersonal)
+    public function edit(Entrenadorpersonal $entrenadorpersonals)
     {
-        return view('entrenadorpersonals/edit',['entrenadorpersonal'=>$entrenadorpersonal]);
+        return view('entrenadorpersonals/edit',['entrenadorpersonals'=>$entrenadorpersonals]);
 
     }
 
@@ -73,14 +73,14 @@ class EntrenadorpersonalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Entrenadorpersonal $entrenadorpersonal)
+    public function update(Request $request, Entrenadorpersonal $entrenadorpersonals)
     {
         $this->validate($request, [
             'especialidad' => 'required|max:255'
         ]);
-        $entrenadorpersonal = fill($request->all());
-        $user = $entrenadorpersonal->user;
-        $entrenadorpersonal->save();
+        $entrenadorpersonals = fill($request->all());
+        $user = $entrenadorpersonals->user;
+        $entrenadorpersonals->save();
         flash('Entrenador Personal modificado correctamente');
         return redirect()->route('entrenadorpersonals.index');
     }
@@ -91,9 +91,9 @@ class EntrenadorpersonalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Entrenadorpersonal $entrenadorpersonal)
+    public function destroy(Entrenadorpersonal $entrenadorpersonals)
     {
-        $entrenadorpersonal->delete();
+        $entrenadorpersonals->delete();
         flash('Entrenador personal borrado correctamente');
         return redirect()->route('entrenadorpersonals.index');
     }

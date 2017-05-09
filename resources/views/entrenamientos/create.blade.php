@@ -5,16 +5,22 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Crear dieta</div>
+                    <div class="panel-heading">Crear entrenamiento</div>
 
                     <div class="panel-body">
                         @include('flash::message')
 
-                        {!! Form::open(['route' => 'dietas.store']) !!}
+                        {!! Form::open(['route' => 'entrenamientos.store', 'class'=>'form-inline']) !!}
                         <div class="form-group">
-                            {!! Form::label('nombreDieta', 'Nombre de la dieta') !!}
-                            {!! Form::text('nombreDieta',null,['class'=>'form-control', 'required', 'autofocus']) !!}
+                            {!! Form::label('fechaInicio', 'Fecha de inicio del entrenamiento') !!}
+                            {!! Form::text('fechaInicio',null,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
+
+                        <div class="form-group">
+                            {!! Form::label('fechaFin', 'Fecha de fin del entrenamiento') !!}
+                            {!! Form::text('fechaFin',null,['class'=>'form-control', 'required', 'autofocus']) !!}
+                        </div>
+
                         <div class="form-group">
                             {!! Form::label('descripcion', 'Descripcion') !!}
                             {!! Form::text('descripcion',null,['class'=>'form-control', 'required', 'autofocus']) !!}
@@ -29,7 +35,6 @@
                             {!!Form::label('entrenadorpersonal_id', 'Entrenadorpersonal') !!}
                             {!! Form::select('entrenadorpersonal_id', $entrenadorpersonals, ['class' => 'form-control']) !!}
                         </div>
-
 
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 
