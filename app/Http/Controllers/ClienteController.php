@@ -101,7 +101,7 @@ class ClienteController extends Controller
     public function update(Request $request, Cliente $cliente)
     {
         $this->validate($request, [
-            'fechaNacimiento' => 'required|date|after:now',
+            'fechaNacimiento' => 'required|date|before:now',
             'sexo' => 'required|max:255',
             'altura' =>'required|numeric',
             'peso' =>'required|numeric',
@@ -109,7 +109,7 @@ class ClienteController extends Controller
             'numeroDeHoras' => 'required|integer',
             'deporteCalle' => 'required|boolean',
             'deporteCasa' => 'required|boolean',
-            'quiereDiete' => 'required|boolean',
+            'quiereDieta' => 'required|boolean',
             'observaciones' => 'required|max:255',
             'problemasMusculares' => 'required|boolean',
             'problemasCardiovasculares' => 'required:boolean',
@@ -119,7 +119,7 @@ class ClienteController extends Controller
             'medicacion' => 'required|max:255'
 
         ]);
-        $cliente = fill($request->all());
+        $cliente->fill($request->all());
         $cliente->save();
         flash('Cliente modificado correctamente');
         return redirect()->route('clientes.index');

@@ -16,7 +16,7 @@ class EntrenadorpersonalController extends Controller
     public function index()
     {
         $entrenadorpersonal = Entrenadorpersonal::all();
-        return view('entrenadorpersonals/index',['entrenadorpersonals'=>$entrenadorpersonal]);
+        return view('entrenadorpersonals/index',['entrenadorpersonal'=>$entrenadorpersonal]);
 
     }
 
@@ -50,7 +50,7 @@ class EntrenadorpersonalController extends Controller
      */
     public function show(Entrenadorpersonal $entrenadorpersonal)
     {
-        return view('entrenadorpersonals/show',['entrenadorpersonals'=>$entrenadorpersonal]);
+        return view('entrenadorpersonals/show',['entrenadorpersonal'=>$entrenadorpersonal]);
 
     }
 
@@ -62,7 +62,7 @@ class EntrenadorpersonalController extends Controller
      */
     public function edit(Entrenadorpersonal $entrenadorpersonal)
     {
-        return view('entrenadorpersonals/edit',['entrenadorpersonals'=>$entrenadorpersonal]);
+        return view('entrenadorpersonals/edit',['entrenadorpersonal'=>$entrenadorpersonal]);
 
     }
 
@@ -78,7 +78,7 @@ class EntrenadorpersonalController extends Controller
         $this->validate($request, [
             'especialidad' => 'required|max:255'
         ]);
-        $entrenadorpersonal = fill($request->all());
+        $entrenadorpersonal->fill($request->all());
         $user = $entrenadorpersonal->user;
         $entrenadorpersonal->save();
         flash('Entrenador Personal modificado correctamente');

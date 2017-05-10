@@ -9,10 +9,6 @@
 
                     <div class="panel-body">
                         @include('flash::message')
-                        {!! Form::open(['route' => 'entrenadorpersonals.create', 'method' => 'get', 'class'=>'inline-important']) !!}
-                        {!!   Form::submit('Crear entrenador', ['class'=> 'btn btn-primary'])!!}
-                        {!! Form::close() !!}
-
 
                         <br><br>
                         <table class="table table-striped table-bordered">
@@ -22,7 +18,7 @@
                                 <th>Especialidad</th>
                                 <th colspan="2">Accion</th>
                             </tr>
-                            @foreach ($entrenadorpersonals as $entrenadorpersonal)
+                            @foreach ($entrenadorpersonal as $entrenadorpersonal)
                             <tr>
                                 <td>{{$entrenadorpersonal->user->name}}</td>
                                 <td>{{$entrenadorpersonal->user->surname}}</td>

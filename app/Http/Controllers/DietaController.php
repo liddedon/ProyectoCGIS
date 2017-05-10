@@ -96,8 +96,8 @@ class DietaController extends Controller
         $this->validate($request,[
             'nombreDieta'=>'required|max:255',
             'descripcion'=>'required|max:255',
-            'cliente_id'=>'required|exists:clientes,id',
-            'entrenadorpersonal_id'=>'required|exists:entrenadorpersonals,id',
+            'cliente_id'=>'nullable|exists:clientes,id',
+            'entrenadorpersonal_id'=>'nullable|exists:entrenadorpersonals,id',
         ]);
 
 

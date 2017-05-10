@@ -22,11 +22,7 @@
                             {!! Form::text('descripcion', $dieta->descripcion, ['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
 
-                        <div class="form-group">
-                            {!!Form::label('cliente_id', 'Cliente') !!}
-                            <br>
-                            {!! Form::select('cliente_id', $clientes, ['class' => 'form-control']) !!}
-                        </div>
+                       
 
                         {!! Form::submit('Actualizar',['class'=>'btn-primary btn']) !!}
                         {!! Form::close() !!}
