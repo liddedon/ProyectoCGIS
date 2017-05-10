@@ -14,17 +14,17 @@
 
                         <div class="form-group">
                             {!! Form::label('name', 'Nombre') !!}
-                            {!! Form::text('name', $cliente->name, ['class'=>'form-control', 'required', 'autofocus']) !!}
+                            {!! Form::text('name', $cliente->user->name, ['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
 
                         <div class="form-group">
                             {!! Form::label('surname', 'Apellidos') !!}
-                            {!! Form::text('surname', $cliente->surname, ['class'=>'form-control', 'required', 'autofocus']) !!}
+                            {!! Form::text('surname', $cliente->user->surname, ['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
 
                         <div class="form-group">
                             {!! Form::label('email', 'Email') !!}
-                            {!! Form::text('email', $cliente->email, ['class'=>'form-control', 'required', 'autofocus']) !!}
+                            {!! Form::text('email', $cliente->user->email, ['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
 
                         <div class="form-group">

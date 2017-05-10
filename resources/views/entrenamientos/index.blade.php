@@ -23,8 +23,8 @@
                             </tr>
                             @foreach ($entrenamientos as $entrenamiento)
                             <tr>
-                                <td>{{ $entrenamiento->Cliente->name }}</td>
-                                <td>{{ $entrenamiento->Entrenadorpersonal->name }}</td>
+                                <td>{{ $entrenamiento->cliente->user->fullname }}</td>
+                                <td>{{ $entrenamiento->entrenadorpersonal->user->fullname }}</td>
                                 <td>
                                     {!! Form::open(['route' => ['entrenamientos.edit',$entrenamiento->id], 'method' => 'get']) !!}
                                     {!!   Form::submit('Editar', ['class'=> 'btn btn-warning'])!!}

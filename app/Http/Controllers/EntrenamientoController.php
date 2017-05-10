@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Ejercicios;
 use App\Entrenadorpersonal;
 use App\Entrenamiento;
+use App\Cliente;
 use Illuminate\Http\Request;
 
 class EntrenamientoController extends Controller
@@ -81,8 +82,8 @@ class EntrenamientoController extends Controller
      */
     public function edit(Entrenamiento $entrenamiento)
     {
-        $entrenadorpersonals=Entrenadorpersonal::all()->pluck('name','id');
-        $clientes=Cliente::all()->pluck('name','id');
+        $entrenadorpersonals=Entrenadorpersonal::all()->pluck('fullname','id');
+        $clientes=Cliente::all()->pluck('fullname','id');
         $ejercicios=Ejercicios::all()->pluck('id');
 
 
@@ -107,7 +108,7 @@ class EntrenamientoController extends Controller
             'cliente_id'=>'required|exists:clientes,id',
             'entrenadorpersonal_id'=>'required|exists:entrenadorpersonals,id'
         ]);
-        $entrenamiento = fill($request->all());
+        $entrenamiento->fill($request->all());
         $entrenamiento->save();
         flash('Entrenamiento modificado correctamente');
         return redirect()->route('entrenamientos.index');

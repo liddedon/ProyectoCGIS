@@ -15,8 +15,8 @@ class EntrenadorpersonalController extends Controller
      */
     public function index()
     {
-        $entrenadorpersonals = Entrenadorpersonal::all();
-        return view('entrenadorpersonals/index',['entrenadorpersonals'=>$entrenadorpersonals]);
+        $entrenadorpersonal = Entrenadorpersonal::all();
+        return view('entrenadorpersonals/index',['entrenadorpersonals'=>$entrenadorpersonal]);
 
     }
 
@@ -48,9 +48,9 @@ class EntrenadorpersonalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Entrenadorpersonal $entrenadorpersonals)
+    public function show(Entrenadorpersonal $entrenadorpersonal)
     {
-        return view('entrenadorpersonals/show',['entrenadorpersonals'=>$entrenadorpersonals]);
+        return view('entrenadorpersonals/show',['entrenadorpersonals'=>$entrenadorpersonal]);
 
     }
 
@@ -60,9 +60,9 @@ class EntrenadorpersonalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Entrenadorpersonal $entrenadorpersonals)
+    public function edit(Entrenadorpersonal $entrenadorpersonal)
     {
-        return view('entrenadorpersonals/edit',['entrenadorpersonals'=>$entrenadorpersonals]);
+        return view('entrenadorpersonals/edit',['entrenadorpersonals'=>$entrenadorpersonal]);
 
     }
 
@@ -73,14 +73,14 @@ class EntrenadorpersonalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Entrenadorpersonal $entrenadorpersonals)
+    public function update(Request $request, Entrenadorpersonal $entrenadorpersonal)
     {
         $this->validate($request, [
             'especialidad' => 'required|max:255'
         ]);
-        $entrenadorpersonals = fill($request->all());
-        $user = $entrenadorpersonals->user;
-        $entrenadorpersonals->save();
+        $entrenadorpersonal = fill($request->all());
+        $user = $entrenadorpersonal->user;
+        $entrenadorpersonal->save();
         flash('Entrenador Personal modificado correctamente');
         return redirect()->route('entrenadorpersonals.index');
     }
@@ -91,9 +91,9 @@ class EntrenadorpersonalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Entrenadorpersonal $entrenadorpersonals)
+    public function destroy(Entrenadorpersonal $entrenadorpersonal)
     {
-        $entrenadorpersonals->delete();
+        $entrenadorpersonal->delete();
         flash('Entrenador personal borrado correctamente');
         return redirect()->route('entrenadorpersonals.index');
     }

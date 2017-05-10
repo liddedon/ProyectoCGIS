@@ -10,7 +10,7 @@ class Ejercicios extends Model
 
 ];
 
-    public function Entrenamiento()
+    public function entrenamiento()
     {
         return $this->belongsToMany('App\Entrenamiento');
     }

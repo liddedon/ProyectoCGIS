@@ -26,13 +26,19 @@
 
 
                                 <tr>
-                                    <td>{{ $cliente->name }}</td>
-                                    <td>{{ $cliente->surname }}</td>
-                                    <td>{{ $cliente->fechaNacimiento }}</td>
+                                    <td>{{ $cliente->user->name }}</td>
+                                    <td>{{ $cliente->user->surname }}</td>
+                                    <td>{{ $cliente->fechaNacimiento ? $cliente->fechaNacimiento : 'N/D' }}</td>
                                     <td>
                                         {!! Form::open(['route' => ['clientes.edit',$cliente->id], 'method' => 'get']) !!}
                                         {!!   Form::submit('Editar', ['class'=> 'btn btn-warning'])!!}
                                         {!! Form::close() !!}
+                                    </td>
+                                    <td>
+                                        {!! Form::open(['route' => ['clientes.destroy',$cliente->id], 'method' => 'delete']) !!}
+                                        {!!   Form::submit('Borrar', ['class'=> 'btn btn-danger','onclick'=> 'if(!confirm("¿Está seguro?"))event.preventDefault();'])!!}
+                                        {!! Form::close() !!}
+
                                     </td>
 
                                 </tr>

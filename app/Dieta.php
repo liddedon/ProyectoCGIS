@@ -14,12 +14,12 @@ class Dieta extends Model
 
     ];
 
-    public function Cliente ()
+    public function cliente ()
     {
         return $this->belongsTo('App\Cliente');
     }
 
-    public function Entrenadorpersonal ()
+    public function entrenadorpersonal ()
     {
         return $this->belongsTo('App\Entrenadorpersonal');
     }

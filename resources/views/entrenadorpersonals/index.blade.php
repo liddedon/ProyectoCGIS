@@ -24,8 +24,8 @@
                             </tr>
                             @foreach ($entrenadorpersonals as $entrenadorpersonal)
                             <tr>
-                                <td>{{$entrenadorpersonal->name}}</td>
-                                <td>{{$entrenadorpersonal->surname}}</td>
+                                <td>{{$entrenadorpersonal->user->name}}</td>
+                                <td>{{$entrenadorpersonal->user->surname}}</td>
                                 <td>{{$entrenadorpersonal->especialidad}}</td>
 
                                 <td>

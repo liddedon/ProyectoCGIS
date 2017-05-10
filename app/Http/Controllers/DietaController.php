@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Cliente;
 use App\Dieta;
+use App\Entrenadorpersonal;
 use Illuminate\Http\Request;
 
 class DietaController extends Controller
@@ -26,8 +28,9 @@ class DietaController extends Controller
      */
     public function create()
     {
-        $entrenadorpersonals=Entrenadorpersonal::all()->pluck('id');
-        $clientes=Cliente::all()->pluck('id');
+
+        $entrenadorpersonals=Entrenadorpersonal::all()->pluck('fullname','id');
+        $clientes=Cliente::all()->pluck('fullname','id');
 
         return view('dietas/create',['entrenadorpersonals'=>$entrenadorpersonals,'clientes'=>$clientes]);
 
@@ -74,8 +77,8 @@ class DietaController extends Controller
      */
     public function edit(Dieta $dieta)
     {
-        $entrenadorpersonals=Entrenadorpersonal::all()->pluck('name','id');
-        $clientes=Cliente::all()->pluck('name','id');
+        $entrenadorpersonals=Entrenadorpersonal::all()->pluck('fullname','id');
+        $clientes=Cliente::all()->pluck('fullname','id');
 
         return view('dietas/edit',['dieta'=>$dieta,'entrenadorpersonals'=>$entrenadorpersonals,'clientes'=>$clientes]);
 
@@ -94,10 +97,11 @@ class DietaController extends Controller
             'nombreDieta'=>'required|max:255',
             'descripcion'=>'required|max:255',
             'cliente_id'=>'required|exists:clientes,id',
-            'entrenadorpersonal_id'=>'required|exists:entrenadorpersonals,id'
+            'entrenadorpersonal_id'=>'required|exists:entrenadorpersonals,id',
         ]);
 
-        $dieta = fill($request->all());
+
+        $dieta->fill($request->all());
         $dieta->save();
         flash('Dieta modificada correctamente');
         return redirect()->route('dietas.index');
@@ -112,7 +116,7 @@ class DietaController extends Controller
     public function destroy(Dieta $dieta)
     {
         $dieta->delete();
-        flash('Dieta borrado correctamente');
+        flash('Dieta borrada correctamente');
         return redirect()->route('dietas.index');
     }
 }

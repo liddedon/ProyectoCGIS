@@ -9,12 +9,12 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    public function Cliente ()
+    public function cliente ()
     {
         return $this->hasOne('App\Cliente');
     }
 
-    public function Entrenadorpersonal()
+    public function entrenadorpersonal()
     {
         return $this->hasOne('App\Entrenadorpersonal');
     }
@@ -38,4 +38,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    function getFullnameAttribute(){
+        return $this->name.' '.$this->surname;
+    }
 }

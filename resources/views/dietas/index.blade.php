@@ -29,8 +29,8 @@
                                 <tr>
                                     <td>{{ $dieta->nombreDieta }}</td>
                                     <td>{{ $dieta->descripcion }}</td>
-                                    <td>{{ $dieta->cliente->name }}</td>
-                                    <td>{{ $dieta->entrenadorpersonal->name}}</td>
+                                    <td>{{ $dieta->cliente->user->fullname }}</td>
+                                    <td>{{ $dieta->entrenadorpersonal->user->fullname}}</td>
                                     <td>
                                         {!! Form::open(['route' => ['dietas.edit',$dieta->id], 'method' => 'get']) !!}
                                         {!!   Form::submit('Editar', ['class'=> 'btn btn-warning'])!!}

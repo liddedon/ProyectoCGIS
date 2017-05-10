@@ -13,18 +13,22 @@ class Entrenadorpersonal extends Model
 
     ];
 
-    public function User ()
+    public function user()
     {
-        return $this->hasOne('App\User');
+        return $this->belongsTo('App\User');
     }
 
-    public function Dieta ()
+    public function dieta()
     {
         return $this->hasMany('App\Dieta');
     }
 
-    public function Entrenamiento ()
+    public function entrenamiento()
     {
         return $this->hasMany('App\Entrenamiento');
+    }
+
+    public function getFullnameAttribute(){
+        return $this->user->fullname;
     }
 }
