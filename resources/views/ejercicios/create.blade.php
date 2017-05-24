@@ -38,7 +38,7 @@
                             {!! Form::text('zona',null,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
 
-                        <div class="form-group">
+                      <div class="form-group">
                             {!!Form::label('entrenamiento_id', 'Entrenamiento') !!}
                             {!! Form::select('entrenamiento_id', $entrenamientos, ['class' => 'form-control']) !!}
                         </div>

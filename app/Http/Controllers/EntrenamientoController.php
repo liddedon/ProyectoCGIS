@@ -32,7 +32,7 @@ class EntrenamientoController extends Controller
     {
         $entrenadorpersonals=Entrenadorpersonal::all()->pluck('name','id');
         $clientes=Cliente::all()->pluck('name','id');
-        $ejercicios=Ejercicios::all()->pluck('id');
+        $ejercicios=Ejercicios::all();
 
 
         return view('entrenamientos/create',['entrenadorpersonals'=>$entrenadorpersonals,'clientes'=>$clientes,
@@ -53,8 +53,53 @@ class EntrenamientoController extends Controller
             'fechaFin' =>'required|date|after:now',
             'descripcion'=>'required|max:255',
             'cliente_id'=>'required|exists:clientes,id',
-            'entrenadorpersonal_id'=>'required|exists:entrenadorpersonals,id'
+            'entrenadorpersonal_id'=>'required|exists:entrenadorpersonals,id',
+            'numSeries' =>'integer',
+            'numRepeticiones' => 'integer',
+            'duracion' => 'time',
+            'observaciones' => 'max:255',
+
         ]);
+
+        $array = [];
+        foreach ($request->all() as $key=>$value) {
+            if (starts_with($key, 'numSeries_')) {
+                $separacion = explode("_", $key);
+                $idEjercicio = $separacion[1];
+                $nombreAtributo = $separacion[0];
+                if (array_key_exists($idEjercicio, $array)) {
+                   /* $nombreValor=array_combine($nombreAtributo,$value);*/
+                    array_push($array,$idEjercicio);
+                }
+
+            }elseif(starts_with($key,'numRepeticiones_')){
+                $separacion = explode("_", $key);
+                $idEjercicio=$separacion[1];
+                $nombreAtributo=$separacion[0];
+                if(array_key_exists($separacion[1],$array)){
+                    /* $nombreValor=array_combine($nombreAtributo,$value);*/
+                    array_push($array,$idEjercicio);
+                }
+
+            }elseif(starts_with($key,'duracion_')){
+                $separacion = explode("_", $key);
+                $idEjercicio=$separacion[1];
+                $nombreAtributo=$separacion[0];
+                if(array_key_exists($separacion[1],$array)){
+                    /* $nombreValor=array_combine($nombreAtributo,$value);*/
+                    array_push($array,$idEjercicio);                }
+
+            }elseif(starts_with($key,'observaciones_')) {
+                $separacion = explode("_", $key);
+                $idEjercicio=$separacion[1];
+                $nombreAtributo=$separacion[0];
+                if (array_key_exists($separacion[1],$array)) {
+                    /* $nombreValor=array_combine($nombreAtributo,$value);*/
+                    array_push($array,$idEjercicio);
+                }
+            }
+        }
+
         $entrenamiento = new Entrenamiento($request->all());
         $entrenamiento->save();
         flash('Entrenamiento creado correctamente');
@@ -70,9 +115,11 @@ class EntrenamientoController extends Controller
      */
     public function show(Entrenamiento $entrenamiento)
     {
+        Entrenamiento::all()->pluck();
         return view('entrenamientos/show',['entrenamiento'=>$entrenamiento]);
-
     }
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -106,7 +153,11 @@ class EntrenamientoController extends Controller
             'fechaFin' =>'required|date|after:now',
             'descripcion'=>'required|max:255',
             'cliente_id'=>'required|exists:clientes,id',
-            'entrenadorpersonal_id'=>'required|exists:entrenadorpersonals,id'
+            'entrenadorpersonal_id'=>'required|exists:entrenadorpersonals,id',
+            'numSeries' =>'integer',
+            'numRepeticiones' => 'integer',
+            'duracion' => 'time',
+            'observaciones' => 'max:255',
         ]);
         $entrenamiento->fill($request->all());
         $entrenamiento->save();

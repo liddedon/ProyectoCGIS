@@ -31,5 +31,5 @@ Route::resource('ejercicios', 'EjerciciosController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-Route::get('Cliente', 'ClienteController@index')->name('Cliente.index');
-Route::get('Dieta', 'DietaController@store')->name('Dieta.store');
+Route::get('cliente', 'ClienteController@index')->name('cliente.index');
+Route::get('dieta', 'DietaController@store')->name('dieta.store');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cliente;
 use App\Dieta;
+use App\Entrenamiento;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -80,6 +81,7 @@ class ClienteController extends Controller
 
     }
 
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -137,4 +139,16 @@ class ClienteController extends Controller
         flash('Cliente borrado correctamente');
         return redirect()->route('clientes.index');
     }
+
+
+    public function storeEntrenamientos($request){
+        dd($request->all());
+        /*foreach($request->all()){
+            if(substr($string,0,strlen($))){
+
+            }
+        }*/
+    }
+
+
 }
