@@ -68,37 +68,55 @@ class EntrenamientoController extends Controller
                 $idEjercicio = $separacion[1];
                 $nombreAtributo = $separacion[0];
                 if (array_key_exists($idEjercicio, $array)) {
-                   /* $nombreValor=array_combine($nombreAtributo,$value);*/
-                    array_push($array,$idEjercicio);
+                    $array[$idEjercicio][$nombreAtributo] = $value;
+                }else{
+                    $array[$idEjercicio] = [$nombreAtributo=>$value];
                 }
 
             }elseif(starts_with($key,'numRepeticiones_')){
                 $separacion = explode("_", $key);
                 $idEjercicio=$separacion[1];
                 $nombreAtributo=$separacion[0];
-                if(array_key_exists($separacion[1],$array)){
-                    /* $nombreValor=array_combine($nombreAtributo,$value);*/
-                    array_push($array,$idEjercicio);
+                if (array_key_exists($idEjercicio, $array)) {
+                    $array[$idEjercicio][$nombreAtributo] = $value;
+                }else{
+                    $array[$idEjercicio] = [$nombreAtributo=>$value];
                 }
 
             }elseif(starts_with($key,'duracion_')){
                 $separacion = explode("_", $key);
                 $idEjercicio=$separacion[1];
                 $nombreAtributo=$separacion[0];
-                if(array_key_exists($separacion[1],$array)){
-                    /* $nombreValor=array_combine($nombreAtributo,$value);*/
-                    array_push($array,$idEjercicio);                }
+                if (array_key_exists($idEjercicio, $array)) {
+                    $array[$idEjercicio][$nombreAtributo] = $value;
+                }else{
+                    $array[$idEjercicio] = [$nombreAtributo=>$value];
+                }
 
             }elseif(starts_with($key,'observaciones_')) {
                 $separacion = explode("_", $key);
                 $idEjercicio=$separacion[1];
                 $nombreAtributo=$separacion[0];
-                if (array_key_exists($separacion[1],$array)) {
-                    /* $nombreValor=array_combine($nombreAtributo,$value);*/
-                    array_push($array,$idEjercicio);
+                if (array_key_exists($idEjercicio, $array)) {
+                    $array[$idEjercicio][$nombreAtributo] = $value;
+                }else{
+                    $array[$idEjercicio] = [$nombreAtributo=>$value];
                 }
             }
+            if (starts_with($key, 'numSeries_')) {
+
+                $separacion = explode("_", $key);
+                $idEjercicio = $separacion[1];
+                $nombreAtributo = $separacion[0];
+                $ejercicio = Ejercicios::find($idEjercicio);
+                $ejercicio->entrenamiento()->attach($array[$idEjercicio] = [$nombreAtributo=>$value]);
+
+
+            }
+
         }
+        //dd($array);
+
 
         $entrenamiento = new Entrenamiento($request->all());
         $entrenamiento->save();
