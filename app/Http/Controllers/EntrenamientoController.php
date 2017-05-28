@@ -61,7 +61,7 @@ class EntrenamientoController extends Controller
 
         ]);
 
-      /*  $array = [];
+       $array = [];
         foreach ($request->all() as $key=>$value) {
             if (starts_with($key, 'numSeries_')) {
                 $separacion = explode("_", $key);
@@ -106,11 +106,23 @@ class EntrenamientoController extends Controller
 
 
 
-        }*/
+        }
 
 
         $entrenamiento = new Entrenamiento($request->all());
         $entrenamiento->save();
+
+
+        foreach ($array as $key=>$value){
+            $idEjercicio=$key;
+            //($idEjercicio);
+            $arrayAttach=$value;
+            //($arrayAttach);
+            $entrenamiento->ejercicios()->attach($idEjercicio,$arrayAttach);
+            //dd($entrenamiento);
+
+        }
+
         flash('Entrenamiento creado correctamente');
         return redirect()->route('entrenamientos.index');
 

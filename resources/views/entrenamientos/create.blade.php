@@ -29,76 +29,77 @@
 
                         <div class="form-group">
                             {!!Form::label('cliente_id', 'Cliente') !!}
-                            {!! Form::select('cliente_id', $clientes, ['class' => 'form-class']) !!}
+                            {!! Form::select('cliente_id', $clientes, ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group">
                             {!!Form::label('entrenadorpersonal_id', 'Entrenadorpersonal') !!}
-                            {!! Form::select('entrenadorpersonal_id', $entrenadorpersonals, ['class' => 'form-class']) !!}
+                            {!! Form::select('entrenadorpersonal_id', $entrenadorpersonals, ['class' => 'form-control']) !!}
                         </div>
 
-                        {!! Form::submit('Guardar',['group'=>'btn-primary btn']) !!}
+                        {{--{!! Form::submit('Guardar',['group'=>'btn-primary btn']) !!}--}}
 
-                        {!! Form::close() !!}
-                    </div>
+                        {{--{!! Form::close() !!}--}}
+
+                    {{--</div>--}}
                 </div>
             </div>
         </div>
     </div>
 
+
+
+     <div class="container">
+         <div class="row">
+             <div class="col-md-8 col-md-offset-2">
+                 <div class="panel panel-default">
+                     <div class="panel-heading">Ejercicios del entrenamiento</div>
+                     <div class="panel-body">
+
+
+                         @foreach ($ejercicios as $ejercicio)
+                             <div class="col">
+                                 <tr>
+                                     <td>{{$ejercicio->nombreejercicio}}
+                                         <select class="form-class" name=" nombreejercicio">
+                                             <option value = "1">No</option>
+                                             <option value = "0">Si</option>
+                                         </select>
+                                     </td>
+                                 </tr>
+                             </div>
+
+
+                             <div class="form-class">
+                                 {!! Form::label('numSeries', 'Numero de series') !!}
+                                 {!! Form::number('numSeries_' . $ejercicio->id,null,['class'=>'form-class', 'autofocus']) !!}
+                             </div>
+
+                             <div class="form-class">
+                                 {!! Form::label('numRepeticiones', 'Numero de repeticiones') !!}
+                                 {!! Form::number('numRepeticiones_' . $ejercicio->id,null,['class'=>'form-class', 'autofocus']) !!}
+                             </div>
+
+                             <div class="form-class">
+                                 {!! Form::label('duracion', 'Duracion del ejercicio') !!}
+                                 {!! Form::time('duracion_' . $ejercicio->id,null,['class'=>'form-class', 'autofocus']) !!}
+                             </div>
+
+                             <div class="form-class">
+                                 {!! Form::label('observaciones', 'Observaciones') !!}
+                                 {!! Form::text('observaciones_' . $ejercicio->id,null,['class'=>'form-class', 'autofocus']) !!}
+                             </div>
+
+
+                         @endforeach
+
+                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
+
+                         {!! Form::close() !!}
+                     </div>
+                 </div>
+             </div>
+         </div>
+          </div>
+
 @endsection
-
-
-    {{--  <div class="container">
-              <div class="row">
-                  <div class="col-md-8 col-md-offset-2">
-                      <div class="panel panel-default">
-                          <div class="panel-heading">Ejercicios del entrenamiento</div>
-                          <div class="panel-body">
-
-
-                          @foreach ($ejercicios as $ejercicio)
-                                  <div class="col">
-                              <tr>
-                                  <td>{{$ejercicio->nombreejercicio}}
-                                      <select class="form-class" name=" nombreejercicio">
-                                          <option value = "1">No</option>
-                                          <option value = "0">Si</option>
-                                      </select>
-                                  </td>
-                              </tr>
-                                  </div>
-
-
-                                  <div class="form-class">
-                                      {!! Form::label('numSeries', 'Numero de series') !!}
-                                      {!! Form::number('numSeries_' . $ejercicio->id,null,['class'=>'form-class', 'autofocus']) !!}
-                                  </div>
-
-                                  <div class="form-class">
-                                      {!! Form::label('numRepeticiones', 'Numero de repeticiones') !!}
-                                      {!! Form::number('numRepeticiones_' . $ejercicio->id,null,['class'=>'form-class', 'autofocus']) !!}
-                                  </div>
-
-                                  <div class="form-class">
-                                      {!! Form::label('duracion', 'Duracion del ejercicio') !!}
-                                      {!! Form::time('duracion_' . $ejercicio->id,null,['class'=>'form-class', 'autofocus']) !!}
-                                  </div>
-
-                                  <div class="form-class">
-                                      {!! Form::label('observaciones', 'Observaciones') !!}
-                                      {!! Form::text('observaciones_' . $ejercicio->id,null,['class'=>'form-class', 'autofocus']) !!}
-                                  </div>
-
-
-                          @endforeach
-  --}}{{--
-                              {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
-
-                          {!! Form::close() !!}--}}{{--
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>--}}
-
