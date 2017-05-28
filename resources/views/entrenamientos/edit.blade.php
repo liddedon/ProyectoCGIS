@@ -10,7 +10,7 @@
                     <div class="panel-body">
                         @include('flash::message')
 
-                        {!! Form::model($entrenamiento, [ 'route' => ['entrenamientos.update',$entrenamiento->id], 'method'=>'PUT', 'class'=>'form-inline']) !!}
+                        {!! Form::model($entrenamiento, [ 'route' => ['entrenamientos.update',$entrenamiento->id], 'method'=>'PUT']) !!}
                         <div class="form-group">
                             {!! Form::label('fechaInicio', 'Fecha de inicio del entrenamiento') !!}
                             {!! Form::text('fechaInicio',$entrenamiento->fechaInicio,['class'=>'form-control', 'required', 'autofocus']) !!}

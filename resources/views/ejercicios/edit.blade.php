@@ -10,7 +10,7 @@
                     <div class="panel-body">
                         @include('flash::message')
 
-                        {!! Form::model($ejercicio, [ 'route' => ['ejercicios.update',$ejercicio->id], 'method'=>'PUT', 'class'=>'form-inline']) !!}
+                        {!! Form::model($ejercicio, [ 'route' => ['ejercicios.update',$ejercicio->id], 'method'=>'PUT']) !!}
                         <div class="form-group">
                             {!! Form::label('nombreejercicio', 'Nombre del ejercicio') !!}
                             {!! Form::text('nombreejercicio',$ejercicio->nombreejercicio,['class'=>'form-control', 'required', 'autofocus']) !!}

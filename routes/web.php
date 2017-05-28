@@ -20,6 +20,8 @@ Route::get('/registerCliente', function () {
 });
 
 
+
+
 Route::resource('users', 'UserController');
 Route::resource('clientes', 'ClienteController');
 Route::resource('entrenadorpersonals', 'EntrenadorpersonalController');

@@ -61,7 +61,7 @@ class EntrenamientoController extends Controller
 
         ]);
 
-        $array = [];
+      /*  $array = [];
         foreach ($request->all() as $key=>$value) {
             if (starts_with($key, 'numSeries_')) {
                 $separacion = explode("_", $key);
@@ -103,19 +103,10 @@ class EntrenamientoController extends Controller
                     $array[$idEjercicio] = [$nombreAtributo=>$value];
                 }
             }
-            if (starts_with($key, 'numSeries_')) {
-
-                $separacion = explode("_", $key);
-                $idEjercicio = $separacion[1];
-                $nombreAtributo = $separacion[0];
-                $ejercicio = Ejercicios::find($idEjercicio);
-                $ejercicio->entrenamiento()->attach($array[$idEjercicio] = [$nombreAtributo=>$value]);
 
 
-            }
 
-        }
-        //dd($array);
+        }*/
 
 
         $entrenamiento = new Entrenamiento($request->all());

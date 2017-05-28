@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Cliente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,11 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-       /* if (count($user->Cliente)){
-        return view('register.blade');
-        }else{
-        return view('registerCliente.blade');
-        }*/
+        $cliente = Cliente::where('user_id',Auth::user()->id)->first();
+       if (isset($cliente)){
         return view('home');
+        }else{
+        return view('homeEntrenador');
+        }
     }
 }

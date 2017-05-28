@@ -8,7 +8,8 @@ class Entrenamiento extends Model
 {
 
     protected $fillable = [
-        'cliente_id','entrenadorpersonal_id','fechaInicio','fechaFin','descripcion',
+        'cliente_id','entrenadorpersonal_id','fechaInicio','fechaFin','descripcion','numSeries','numRepeticiones',
+        'duracion','observaciones'
 
     ];
     public function entrenadorpersonal()
@@ -22,7 +23,7 @@ class Entrenamiento extends Model
 
     public function ejercicios()
     {
-        return $this->belongsToMany('App\Ejercicios');
+        return $this->belongsToMany('App\Ejercicios')->withPivot('numSeries','numRepeticiones','duracion','observaciones');
     }
 
     //

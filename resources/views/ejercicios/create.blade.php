@@ -10,23 +10,23 @@
                     <div class="panel-body">
                         @include('flash::message')
 
-                        {!! Form::open(['route' => 'ejercicios.store', 'class'=>'form-inline']) !!}
+                        {!! Form::open(['route' => 'ejercicios.store']) !!}
                         <div class="form-group">
                             {!! Form::label('nombreejercicio', 'Nombre del ejercicio') !!}
                             {!! Form::text('nombreejercicio',null,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
 
-{{--
+
                         <div class="form-group">
                             {!! Form::label('foto', 'Foto') !!}
-                            {!! Form::text('foto',null,['class'=>'form-control', 'required', 'autofocus']) !!}
+                            {!! Form::url('foto',null,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
 
                         <div class="form-group">
                             {!! Form::label('video', 'Video') !!}
-                            {!! Form::text('video',null,['class'=>'form-control', 'required', 'autofocus']) !!}
+                            {!! Form::url('video',null,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
---}}
+
 
                         <div class="form-group">
                             {!! Form::label('descripcion', 'Descripcion') !!}
@@ -40,7 +40,7 @@
 
                       <div class="form-group">
                             {!!Form::label('entrenamiento_id', 'Entrenamiento') !!}
-                            {!! Form::select('entrenamiento_id', $entrenamientos, ['class' => 'form-control']) !!}
+                            {!! Form::select('entrenamiento_id', $entrenamientos, ['class' => 'form-class']) !!}
                         </div>
 
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}

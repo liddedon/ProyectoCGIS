@@ -10,7 +10,7 @@
                     <div class="panel-body">
                         @include('flash::message')
 
-                        {!! Form::model($entrenadorpersonal, [ 'route' => ['entrenadorpersonals.update',$entrenadorpersonal->id], 'method'=>'PUT', 'class'=>'form-inline']) !!}
+                        {!! Form::model($entrenadorpersonal, [ 'route' => ['entrenadorpersonals.update',$entrenadorpersonal->id], 'method'=>'PUT']) !!}
 
                         <div class="form-group">
                             {!! Form::label('name', 'Nombre') !!}

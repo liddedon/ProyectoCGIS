@@ -22,11 +22,13 @@
 
                         <div class="form-group">
                             {!!Form::label('cliente_id', 'Cliente') !!}
+                            <br>
                             {!! Form::select('cliente_id', $clientes, ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group">
                             {!!Form::label('entrenadorpersonal_id', 'Entrenadorpersonal') !!}
+                            <br>
                             {!! Form::select('entrenadorpersonal_id', $entrenadorpersonals, ['class' => 'form-control']) !!}
                         </div>
 

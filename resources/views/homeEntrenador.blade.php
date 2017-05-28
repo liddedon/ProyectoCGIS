@@ -12,7 +12,12 @@
 
                     <div class="top-right links">
                         @if (Auth::check())
-
+                            <br>
+                            <a href="{{ url('/entrenamientos') }}">Crea un entrenamiento</a>
+                        <br>
+                            <a href="{{ url('/dietas') }}">Crea una dieta</a>
+                        <br>
+                            <a href="{{ url('/ejercicios') }}">Crea un ejercicio</a>
                         @else
                             <a href="{{ url('/entrenamientos/create') }}">Crea un entrenamiento</a>
                             <a href="{{ url('/dietas/create') }}">Crea una dieta</a>
